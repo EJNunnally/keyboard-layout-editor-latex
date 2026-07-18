@@ -90,6 +90,14 @@
 
 \NewDocumentCommand{\setKeyTopLeft}{m}{
     \renewcommand{\topLeftLegend}{#1}
+    \node[] () at (labelcenter) {
+        \mbox{%
+            \parbox[t][\keyLabelHeight][t]{\keyLabelWidth}{%
+                \raggedright
+                \textcolor{legendcolor}{\textsf{\topLeftLegend\spacehelper}}
+            }%
+        }
+    };
 }
 
 \NewDocumentCommand{\setKeyTopCenter}{m}{
@@ -114,6 +122,14 @@
 
 \NewDocumentCommand{\setKeyBottomLeft}{m}{
     \renewcommand{\bottomLeftLegend}{#1}
+    \node[] () at (labelcenter) {
+        \mbox{%
+            \parbox[b][\keyLabelHeight][b]{\keyLabelWidth}{%
+                \raggedright
+                \textcolor{legendcolor}{\textsf{\bottomLeftLegend\spacehelper}}
+            }%
+        }
+    };
 }
 
 \NewDocumentCommand{\setKeyBottomCenter}{m}{
@@ -122,6 +138,14 @@
 
 \NewDocumentCommand{\setKeyBottomRight}{m}{
     \renewcommand{\bottomRightLegend}{#1}
+    \node[] () at (labelcenter) {
+        \mbox{%
+            \parbox[b][\keyLabelHeight][b]{\keyLabelWidth}{%
+                \raggedleft
+                \textcolor{legendcolor}{\textsf{\textbf{\spacehelper\bottomRightLegend}}}
+            }%
+        }
+    };
 }
 
 \NewDocumentCommand{\setKeyColors}{mmm}{
@@ -209,32 +233,8 @@
 
     \filldraw[draw=\keyBorderColor, rounded corners=3pt, fill=\keyTopColor, line width=1pt] (topnorthwest) rectangle (topsoutheast);
 
-    \node[] () at (labelcenter) {
-        \mbox{%
-            \parbox[t][\keyLabelHeight][t]{\keyLabelWidth}{%
-                \raggedright
-                \textcolor{legendcolor}{\textsf{\topLeftLegend\spacehelper}}
-            }%
-        }
-    };
 
-    \node[] () at (labelcenter) {
-        \mbox{%
-            \parbox[b][\keyLabelHeight][b]{\keyLabelWidth}{%
-                \raggedright
-                \textcolor{legendcolor}{\textsf{\bottomLeftLegend\spacehelper}}
-            }%
-        }
-    };
 
-    \node[] () at (labelcenter) {
-        \mbox{%
-            \parbox[b][\keyLabelHeight][b]{\keyLabelWidth}{%
-                \raggedleft
-                \textcolor{legendcolor}{\textsf{\textbf{\spacehelper\bottomRightLegend}}}
-            }%
-        }
-    };
     % \keyDebug
 }
 
@@ -260,6 +260,6 @@
     \coordinate (backgroundnorthwest) at ($(backgroundcenter) + (-0.5\U,0.5\U) + (-10pt,10pt)$);
     \coordinate (backgroundsoutheast) at ($(backgroundcenter) + (\fpeval{\backgroundWidth - 1}\U,-\fpeval{\backgroundHeight - 1}\U) + (0.5\U,-0.5\U) + (10pt,-10pt)$);
     \begin{scope}[on background layer]
-        \filldraw[fill=bgcolor, draw=bgbordercolor, rounded corners=0pt] (backgroundnorthwest) rectangle (backgroundsoutheast);
+        \filldraw[fill=bgcolor, draw=bgbordercolor, rounded corners=0pt, line width=1pt] (backgroundnorthwest) rectangle (backgroundsoutheast);
     \end{scope}
 }
