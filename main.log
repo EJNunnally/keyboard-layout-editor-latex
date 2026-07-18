@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999996 (TeX Live 2025/dev/Debian) (preloaded format=xelatex 2026.7.14)  17 JUL 2026 22:04
+This is XeTeX, Version 3.141592653-2.6-0.999996 (TeX Live 2025/dev/Debian) (preloaded format=xelatex 2026.1.14)  18 JUL 2026 00:49
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -514,7 +514,17 @@ LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `bold'
 (Font)                  OT1/cmss/bx/n --> TU/Helvetica(0)/b/n on input line 4.
 LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `bold'
 (Font)                  OT1/cmtt/m/n --> TU/lmtt/b/n on input line 4.
-(./layouts/default60.tex)
+(./layouts/fingerchart60.tex
+Overfull \hbox (1.15402pt too wide) in paragraph at lines 261--261
+ [][][]\TU/Helvetica(0)/b/n/12 Thumb[]
+ []
+
+
+Overfull \hbox (1.15402pt too wide) in paragraph at lines 271--271
+ [][][]\TU/Helvetica(0)/b/n/12 Thumb[]
+ []
+
+)
 
 [1
 
@@ -525,12 +535,12 @@ L3 programming layer <2025-01-18>
  ***********
  ) 
 Here is how much of TeX's memory you used:
- 14801 strings out of 475852
- 349439 string characters out of 5775423
- 1055147 words of memory out of 5000000
- 37496 multiletter control sequences out of 15000+600000
- 558949 words of font info for 50 fonts, out of 8000000 for 9000
- 14 hyphenation exceptions out of 8191
- 117i,7n,121p,416b,680s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 14861 strings out of 473835
+ 350316 string characters out of 5731946
+ 1065540 words of memory out of 5000000
+ 37691 multiletter control sequences out of 15000+600000
+ 558957 words of font info for 51 fonts, out of 8000000 for 9000
+ 1348 hyphenation exceptions out of 8191
+ 117i,7n,121p,416b,689s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
 Output written on main.pdf (1 page).

@@ -8,13 +8,45 @@
 \setlength{\U}{54pt}
 \newlength{\keyLabelWidth}
 \newlength{\keyLabelHeight}
-\newcommand{\spacehelper}{\phantom{{A}g}} % phantom is helping with the vertical inline spacing
+\newcommand{\spacehelper}{\phantom{lg}} % phantom is helping with the vertical inline spacing
+
+% default keyboard colors
 \definecolor{basecolor}{RGB}{\inteval{12*16+12},\inteval{12*16+12},\inteval{12*16+12}} % CCCCCC
 \definecolor{topcolor}{RGB}{\inteval{15*16+12},\inteval{15*16+12},\inteval{15*16+12}} % FCFCFC
 \definecolor{bordercolor}{RGB}{\inteval{11*16+8},\inteval{11*16+8},\inteval{11*16+8}} % B8B8B8
 \definecolor{legendcolor}{RGB}{8,8,8} % 080808
 \definecolor{bgcolor}{RGB}{\inteval{14*16+14},\inteval{14*16+14},\inteval{14*16+14}} % EEEEEE
 \definecolor{bgbordercolor}{RGB}{\inteval{13*16+13},\inteval{13*16+13},\inteval{13*16+13}} % DDDDDD
+
+% other keyboard colors
+\definecolor{basered}{RGB}{234,153,153} % ea9999 
+\definecolor{topred}{RGB}{255,193,193} % ffc1c1
+\definecolor{borderred}{RGB}{211,138,138} % d38a8a
+
+\definecolor{baseorange}{RGB}{246,178,107} % f6b26b
+\definecolor{toporange}{RGB}{255,223,149} % ffdf95
+\definecolor{borderorange}{RGB}{221,160,96} % dda060
+
+\definecolor{baseyellow}{RGB}{255,217,102} % ffd966
+\definecolor{topyellow}{RGB}{255,251,134} % fffb86
+\definecolor{borderyellow}{RGB}{230,195,92} % e6c35c
+
+\definecolor{basegreen}{RGB}{147,196,125} % 93c47d
+\definecolor{topgreen}{RGB}{189,240,166} % bdf0a6
+\definecolor{bordergreen}{RGB}{132,176,113} % 84b071
+
+\definecolor{baseblue}{RGB}{159,197,232} % 9fc5e8
+\definecolor{topblue}{RGB}{204,243,255} % ccf3ff
+\definecolor{borderblue}{RGB}{143,177,209} % 8fb1d1
+
+\definecolor{basepurple}{RGB}{180,167,214} % b4a7d6
+\definecolor{toppurple}{RGB}{221,207,255} % ddcfff
+\definecolor{borderpurple}{RGB}{162,150,193} % a296c1
+
+% call keyboard colors
+\newcommand{\keyBaseColor}{basecolor}
+\newcommand{\keyTopColor}{topcolor}
+\newcommand{\keyBorderColor}{bordercolor}
 
 % key position and dimensions
 \newcommand{\keyX}{0}
@@ -92,6 +124,73 @@
     \renewcommand{\bottomRightLegend}{#1}
 }
 
+\NewDocumentCommand{\setKeyColors}{mmm}{
+    \renewcommand{\keyBaseColor}{#1}
+    \renewcommand{\keyTopColor}{#2}
+    \renewcommand{\keyBorderColor}{#3}
+}
+
+\NewDocumentCommand{\resetKeyColors}{}{
+    \renewcommand{\keyBaseColor}{basecolor}
+    \renewcommand{\keyTopColor}{topcolor}
+    \renewcommand{\keyBorderColor}{bordercolor}
+}
+
+% preset keys for very specific diagrams...?
+\NewDocumentCommand{\LPinky}{} {
+    \setKeyColors{baseblue}{topblue}{borderblue}
+    \setKeyBottomRight{L4}
+    \placeKey
+}
+
+\NewDocumentCommand{\LRing}{} {
+    \setKeyColors{basegreen}{topgreen}{bordergreen}
+    \setKeyBottomRight{L3}
+    \placeKey
+}
+
+\NewDocumentCommand{\LMiddle}{} {
+    \setKeyColors{baseyellow}{topyellow}{borderyellow}
+    \setKeyBottomRight{L2}
+    \placeKey
+}
+
+\NewDocumentCommand{\LIndex}{} {
+    \setKeyColors{basered}{topred}{borderred}
+    \setKeyBottomRight{L1}
+    \placeKey
+}
+
+\NewDocumentCommand{\RIndex}{} {
+    \setKeyColors{baseorange}{toporange}{borderorange}
+    \setKeyBottomRight{R1}
+    \placeKey
+}
+
+\NewDocumentCommand{\RMiddle}{} {
+    \setKeyColors{baseyellow}{topyellow}{borderyellow}
+    \setKeyBottomRight{R2}
+    \placeKey
+}
+
+\NewDocumentCommand{\RRing}{} {
+    \setKeyColors{basegreen}{topgreen}{bordergreen}
+    \setKeyBottomRight{R3}
+    \placeKey
+}
+
+\NewDocumentCommand{\RPinky}{} {
+    \setKeyColors{baseblue}{topblue}{borderblue}
+    \setKeyBottomRight{R4}
+    \placeKey
+}
+
+\NewDocumentCommand{\Thumb}{} {
+    \setKeyColors{basepurple}{toppurple}{borderpurple}
+    \setKeyBottomRight{Thumb}
+    \placeKey
+}
+
 \NewDocumentCommand{\placeKey}{} {
     % set some parameters because I can't read messy length calculations
     \coordinate (keycenter) at (\keyX\U,\keyY\U);
@@ -106,9 +205,9 @@
     \setlength{\keyLabelWidth}{\fpeval{(2/3)+\keyWidth-1}\U}
     \setlength{\keyLabelHeight}{\fpeval{(2/3)+\keyHeight-1}\U}
 
-    \filldraw[draw=black,rounded corners=5pt, fill=basecolor, line width=1pt] (basenorthwest) rectangle (basesoutheast);
+    \filldraw[draw=black,rounded corners=5pt, fill=\keyBaseColor, line width=1pt] (basenorthwest) rectangle (basesoutheast);
 
-    \filldraw[draw=bordercolor, rounded corners=3pt, fill=topcolor, line width=1pt] (topnorthwest) rectangle (topsoutheast);
+    \filldraw[draw=\keyBorderColor, rounded corners=3pt, fill=\keyTopColor, line width=1pt] (topnorthwest) rectangle (topsoutheast);
 
     \node[] () at (labelcenter) {
         \mbox{%
@@ -132,7 +231,7 @@
         \mbox{%
             \parbox[b][\keyLabelHeight][b]{\keyLabelWidth}{%
                 \raggedleft
-                \textcolor{legendcolor}{\textsf{\spacehelper\bottomRightLegend}}
+                \textcolor{legendcolor}{\textsf{\textbf{\spacehelper\bottomRightLegend}}}
             }%
         }
     };
@@ -161,6 +260,6 @@
     \coordinate (backgroundnorthwest) at ($(backgroundcenter) + (-0.5\U,0.5\U) + (-10pt,10pt)$);
     \coordinate (backgroundsoutheast) at ($(backgroundcenter) + (\fpeval{\backgroundWidth - 1}\U,-\fpeval{\backgroundHeight - 1}\U) + (0.5\U,-0.5\U) + (10pt,-10pt)$);
     \begin{scope}[on background layer]
-        \filldraw[fill=bgcolor, draw=bgbordercolor, rounded corners=6pt] (backgroundnorthwest) rectangle (backgroundsoutheast);
+        \filldraw[fill=bgcolor, draw=bgbordercolor, rounded corners=0pt] (backgroundnorthwest) rectangle (backgroundsoutheast);
     \end{scope}
 }
