@@ -1,0 +1,64 @@
+% \setlength{\U}{19.05mm} % real dimensions, but the website has a different length
+% \definecolor{basered}{RGB}{240,\inteval{6*16+6},\inteval{6*16+6}} % E06666
+% \definecolor{topred}{RGB}{255,\inteval{8*16+7},\inteval{8*16+4}} % FF8784
+% \definecolor{borderred}{RGB}{\inteval{12*16+10},\inteval{5*16+11},\inteval{5*16+11}} % CA5B5B
+% \definecolor{borderred}{RGB}{\inteval{11*16+7},\inteval{11*16+7},\inteval{11*16+7}} % B7B7B7 % the HTML on the website says rgba(0,0,0,0.1): try to find RGB equivalent as black!10 doesn't work
+    % \draw[borderred,rounded corners=3pt,fill=topred, line width=1pt] ($(#1\U,-#2\U) + (-0.5\U,0.5\U) + (6pt,-3pt)$) rectangle ($(#1\U,-#2\U) + (-0.5\U,0.5\U) + (#3\U,-#4\U) + (-6pt,6pt)$);
+    % \draw[red] ($(#1\U,-#2\U) + (-27pt,-27pt) $) rectangle ($(#1\U,-#2\U) + (27pt,27pt) $);
+    % \draw[red] ($(#1\U,-#2\U) + (-21pt,-18pt) $) rectangle ($(#1\U,-#2\U) + (21pt,24pt) $);
+    % \draw[red] ($(#1\U,-#2\U) + (-18pt,-15pt) $) rectangle ($(#1\U,-#2\U) + (18pt,21pt) $);
+    % \node[anchor=north west,align=left] () at ($(#1\U,-#2\U) + ((-0.5\U,0.5\U) + (2mm,-1mm)$) {\textsf{1234567890}}; % top left legend
+    % \fill[red] ($(#1\U,-#2\U) + (-18pt,-15pt) + (0,-\inteval{#4-1}\U)$) circle (1pt);
+%     \node[anchor=south east,align=left] () at ($(#1\U,-#2\U) + (\fpeval{#4-0.5}\U,\fpeval{0.5-#4}\U) + (-1.5mm,2.75mm)$) {
+%         \textcolor{legendcolor}{\textsf{R4}}
+%     }; % bottom right legend
+% }
+% \bottomleftnode{X}{Y}{width}{height}{label}
+% places bottom left label on a key
+% \NewDocumentCommand{\bottomleftnode}{mmmmm}{
+%     \node[anchor=south west,align=left] () at ($(#1\U,-#2\U) + (-18pt,-15pt) + (0,-\inteval{#4-1}\U)$) {\textcolor{legendcolor}{\textsf{#3}}}; % bottom left legend
+% }
+        % \begin{tabular}{l}
+        %     \textcolor{legendcolor}{\textsf{R4}}
+        % \end{tabular}
+    % \coordinate (key) at #1;
+
+\NewDocumentCommand{\key}{mmO{1}O{1}} {
+    \coordinate (keycenter) at (#1\U,-#2\U);
+    \coordinate (truecenter) at ($(keycenter) + (\fpeval{0.5*(#3-1)}\U,-\fpeval{0.5*(#4-1)}\U)$);
+
+    \draw[rounded corners=5pt,fill=basecolor,line width=1pt] ($(keycenter) + (-0.5\U,0.5\U)$) rectangle ($(keycenter) + (#3\U,-#4\U) + (-0.5\U,0.5\U)$);
+
+    \draw[bordercolor,rounded corners=3pt,fill=topcolor, line width=1pt] ($(keycenter) + (-21pt,-18pt) + (0,-\inteval{#4-1}\U) $) rectangle ($(keycenter) + (21pt,24pt) + (\inteval{#4-1}\U,0)$);
+
+    % \node[anchor=south west,align=left] () at ($(keycenter) + (-18pt,-15pt) + (0,-\inteval{#4-1}\U)$) {\textcolor{legendcolor}{\textsf{R4;}}}; % bottom left legend
+
+    % \node[anchor=north west,align=left] () at ($(keycenter) + (-0.5\U,0.5\U) + (1.5mm,-1.5mm)$) {\textcolor{legendcolor}{\textsf{:}}}; % top left legend
+
+    \node[] () at ($(truecenter) + (0,3pt)$) {
+        \mbox{%
+            \parbox[t][\fpeval{(2/3)+#4-1}\U][t]{\fpeval{(2/3)+#4-1}\U}{%
+                \raggedright
+                \textcolor{legendcolor}{\textsf{:}}\phantom{R;} % phantom is helping with the vertical inline spacing
+            }%
+        }
+    }; % top left legend
+
+    \node[] () at ($(truecenter) + (0,3pt)$) {
+        \mbox{%
+            \parbox[b][\fpeval{(2/3)+#4-1}\U][b]{\fpeval{(2/3)+#4-1}\U}{%
+                \raggedright
+                \textcolor{legendcolor}{\textsf{R4}}\phantom{R;}
+            }%
+        }
+    }; % bottom left legend
+
+    \node[] () at ($(truecenter) + (0,3pt)$) {
+        \mbox{%
+            \parbox[b][\fpeval{(2/3)+#4-1}\U][b]{\fpeval{(2/3)+#4-1}\U}{%
+                \raggedleft
+                \phantom{R;}\textcolor{legendcolor}{\textsf{R4;}}
+            }%
+        }
+    }; % bottom right legend
+}

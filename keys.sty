@@ -1,0 +1,166 @@
+\usepackage{tikz}
+\usetikzlibrary{calc}
+\usetikzlibrary{backgrounds}
+\usepackage{fontspec} % needs either xelatex or lualatex compiler
+\setsansfont{Helvetica}
+
+\newlength{\U}
+\setlength{\U}{54pt}
+\newlength{\keyLabelWidth}
+\newlength{\keyLabelHeight}
+\newcommand{\spacehelper}{\phantom{{A}g}} % phantom is helping with the vertical inline spacing
+\definecolor{basecolor}{RGB}{\inteval{12*16+12},\inteval{12*16+12},\inteval{12*16+12}} % CCCCCC
+\definecolor{topcolor}{RGB}{\inteval{15*16+12},\inteval{15*16+12},\inteval{15*16+12}} % FCFCFC
+\definecolor{bordercolor}{RGB}{\inteval{11*16+8},\inteval{11*16+8},\inteval{11*16+8}} % B8B8B8
+\definecolor{legendcolor}{RGB}{8,8,8} % 080808
+\definecolor{bgcolor}{RGB}{\inteval{14*16+14},\inteval{14*16+14},\inteval{14*16+14}} % EEEEEE
+\definecolor{bgbordercolor}{RGB}{\inteval{13*16+13},\inteval{13*16+13},\inteval{13*16+13}} % DDDDDD
+
+% key position and dimensions
+\newcommand{\keyX}{0}
+\newcommand{\keyY}{0}
+\newcommand{\keyWidth}{1}
+\newcommand{\keyHeight}{1}
+\newcommand{\keyRotationCenter}{(0,0)} % has to be a coordinate; I will regret this later...
+\newcommand{\keyRotationAngle}{0}
+
+% background position and dimensions
+\newcommand{\backgroundX}{}
+\newcommand{\backgroundY}{}
+\newcommand{\backgroundWidth}{}
+\newcommand{\backgroundHeight}{}
+
+% key legends
+\newcommand{\topLeftLegend}{}
+\newcommand{\topCenterLegend}{}
+\newcommand{\topRightLegend}{}
+\newcommand{\centerLeftLegend}{}
+\newcommand{\centerRightLegend}{}
+\newcommand{\centerCenterLegend}{}
+\newcommand{\bottomLeftLegend}{}
+\newcommand{\bottomCenterLegend}{}
+\newcommand{\bottomRightLegend}{}
+
+\NewDocumentCommand{\setKeyPosition}{mm}{
+    \renewcommand{\keyX}{#1}
+    \renewcommand{\keyY}{\fpeval{-#2}}
+}
+
+\NewDocumentCommand{\setKeyDimension}{mm}{
+    \renewcommand{\keyWidth}{#1}
+    \renewcommand{\keyHeight}{#2}
+}
+
+\NewDocumentCommand{\setKeyRotation}{mm}{
+    \renewcommand{\keyRotationCenter}{#1} % needs to be a coordinate, I might regret this later
+    \renewcommand{\keyRotationAngle}{#2}
+}
+
+\NewDocumentCommand{\setKeyTopLeft}{m}{
+    \renewcommand{\topLeftLegend}{#1}
+}
+
+\NewDocumentCommand{\setKeyTopCenter}{m}{
+    \renewcommand{\topCenterLegend}{#1}
+}
+
+\NewDocumentCommand{\setKeyTopRight}{m}{
+    \renewcommand{\topRightLegend}{#1}
+}
+
+\NewDocumentCommand{\setKeyCenterLeft}{m}{
+    \renewcommand{\centerLeftLegend}{#1}
+}
+
+\NewDocumentCommand{\setKeyCenterCenter}{m}{
+    \renewcommand{\centerRightLegend}{#1}
+}
+
+\NewDocumentCommand{\setKeyCenterRight}{m}{
+    \renewcommand{\centerRightLegend}{#1}
+}
+
+\NewDocumentCommand{\setKeyBottomLeft}{m}{
+    \renewcommand{\bottomLeftLegend}{#1}
+}
+
+\NewDocumentCommand{\setKeyBottomCenter}{m}{
+    \renewcommand{\bottomRightLegend}{#1}
+}
+
+\NewDocumentCommand{\setKeyBottomRight}{m}{
+    \renewcommand{\bottomRightLegend}{#1}
+}
+
+\NewDocumentCommand{\placeKey}{} {
+    % set some parameters because I can't read messy length calculations
+    \coordinate (keycenter) at (\keyX\U,\keyY\U);
+    \coordinate (truecenter) at ($(keycenter) + (\fpeval{0.5*(\keyWidth-1)}\U,-\fpeval{0.5*(\keyHeight-1)}\U)$);
+    \coordinate (labelcenter) at ($(truecenter) + (0,3pt)$);
+    \coordinate (labelnorthwest) at ($(labelcenter) + (-18pt,18pt) + (-\fpeval{0.5*(\keyWidth-1)}\U,\fpeval{0.5*(\keyHeight-1)}\U)$);
+    \coordinate (labelsoutheast) at ($(labelcenter) + (18pt,-18pt) + (\fpeval{0.5*(\keyWidth-1)}\U,-\fpeval{0.5*(\keyHeight-1)}\U)$);
+    \coordinate (topnorthwest) at ($(labelnorthwest) + (-3pt,3pt)$);
+    \coordinate (topsoutheast) at ($(labelsoutheast) + (3pt,-3pt)$);
+    \coordinate (basenorthwest) at ($(keycenter) + (-0.5\U,0.5\U)$);
+    \coordinate (basesoutheast) at ($(keycenter) + (\keyWidth\U,-\keyHeight\U) + (-0.5\U,0.5\U)$);
+    \setlength{\keyLabelWidth}{\fpeval{(2/3)+\keyWidth-1}\U}
+    \setlength{\keyLabelHeight}{\fpeval{(2/3)+\keyHeight-1}\U}
+
+    \filldraw[draw=black,rounded corners=5pt, fill=basecolor, line width=1pt] (basenorthwest) rectangle (basesoutheast);
+
+    \filldraw[draw=bordercolor, rounded corners=3pt, fill=topcolor, line width=1pt] (topnorthwest) rectangle (topsoutheast);
+
+    \node[] () at (labelcenter) {
+        \mbox{%
+            \parbox[t][\keyLabelHeight][t]{\keyLabelWidth}{%
+                \raggedright
+                \textcolor{legendcolor}{\textsf{\topLeftLegend\spacehelper}}
+            }%
+        }
+    };
+
+    \node[] () at (labelcenter) {
+        \mbox{%
+            \parbox[b][\keyLabelHeight][b]{\keyLabelWidth}{%
+                \raggedright
+                \textcolor{legendcolor}{\textsf{\bottomLeftLegend\spacehelper}}
+            }%
+        }
+    };
+
+    \node[] () at (labelcenter) {
+        \mbox{%
+            \parbox[b][\keyLabelHeight][b]{\keyLabelWidth}{%
+                \raggedleft
+                \textcolor{legendcolor}{\textsf{\spacehelper\bottomRightLegend}}
+            }%
+        }
+    };
+    % \keyDebug
+}
+
+\NewDocumentCommand{\keyDebug}{}{
+    \draw[red] (labelnorthwest) rectangle (labelsoutheast); % Are my labels extending to where they should be?
+    \fill[red] (keycenter) circle (1pt) node {\tiny{keycenter}}; % Where is the key's position?
+    \fill[red] (truecenter) circle (1pt) node {\tiny{truecenter}}; % Where is the center of the key?
+    \fill[red] (labelcenter) circle (1pt) node {\tiny{labelcenter}}; % Where is the center of the key?
+}
+
+\NewDocumentCommand{\setBackgroundPosition}{mm}{ % this should be the position of the top left key
+    \renewcommand{\backgroundX}{#1}
+    \renewcommand{\backgroundY}{#2}
+}
+
+\NewDocumentCommand{\setBackgroundDimension}{mm}{
+    \renewcommand{\backgroundWidth}{#1}
+    \renewcommand{\backgroundHeight}{#2}
+}
+
+\NewDocumentCommand{\placeBackground}{}{ % this should be placed before any keys... unless there is a layer system in tikZ
+    \coordinate (backgroundcenter) at (\backgroundX\U,\backgroundY\U);
+    \coordinate (backgroundnorthwest) at ($(backgroundcenter) + (-0.5\U,0.5\U) + (-10pt,10pt)$);
+    \coordinate (backgroundsoutheast) at ($(backgroundcenter) + (\fpeval{\backgroundWidth - 1}\U,-\fpeval{\backgroundHeight - 1}\U) + (0.5\U,-0.5\U) + (10pt,-10pt)$);
+    \begin{scope}[on background layer]
+        \filldraw[fill=bgcolor, draw=bgbordercolor, rounded corners=6pt] (backgroundnorthwest) rectangle (backgroundsoutheast);
+    \end{scope}
+}

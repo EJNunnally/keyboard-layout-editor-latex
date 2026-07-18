@@ -1,0 +1,4 @@
+% make keys as closely styled with the default keys from keyboard-layout-editor.com as possible
+% colors are easy to grab from a color picker: the colors selected on the site are the colors for the base and not the top: use a color picker for the top colors (the border colors are a real pain to grab because of transparency, which is hard to replicate in tikZ)
+% plan: make a set of temporary 'variables' in the form of commands using \newcommand and \renewcommand; could use macro chaining, but I think I would have to keep adding to the every other command because I might have so many variables; I'm trying to make this cleaner and more robust, but we'll see what happens
+% The commands are working well so far; I'm thinking of using preset commands for this one, like setting the colors of the key and the labels or presetting the size of the key or even making a preset for a key with three labels or something...
