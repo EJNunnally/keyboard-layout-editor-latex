@@ -67,8 +67,8 @@
 \newcommand{\topCenterLegend}{}
 \newcommand{\topRightLegend}{}
 \newcommand{\centerLeftLegend}{}
-\newcommand{\centerRightLegend}{}
 \newcommand{\centerCenterLegend}{}
+\newcommand{\centerRightLegend}{}
 \newcommand{\bottomLeftLegend}{}
 \newcommand{\bottomCenterLegend}{}
 \newcommand{\bottomRightLegend}{}
@@ -102,22 +102,62 @@
 
 \NewDocumentCommand{\setKeyTopCenter}{m}{
     \renewcommand{\topCenterLegend}{#1}
+    \node[] () at (labelcenter) {
+        \mbox{%
+            \parbox[t][\keyLabelHeight][t]{\keyLabelWidth}{%
+                \centering
+                \textcolor{legendcolor}{\textsf{\topCenterLegend\spacehelper}}
+            }%
+        }
+    };
 }
 
 \NewDocumentCommand{\setKeyTopRight}{m}{
     \renewcommand{\topRightLegend}{#1}
+    \node[] () at (labelcenter) {
+        \mbox{%
+            \parbox[t][\keyLabelHeight][t]{\keyLabelWidth}{%
+                \raggedleft
+                \textcolor{legendcolor}{\textsf{\topRightLegend\spacehelper}}
+            }%
+        }
+    };
 }
 
 \NewDocumentCommand{\setKeyCenterLeft}{m}{
     \renewcommand{\centerLeftLegend}{#1}
+    \node[] () at (labelcenter) {
+        \mbox{%
+            \parbox[c][\keyLabelHeight][c]{\keyLabelWidth}{%
+                \raggedright
+                \textcolor{legendcolor}{\textsf{\centerLeftLegend\spacehelper}}
+            }%
+        }
+    };
 }
 
 \NewDocumentCommand{\setKeyCenterCenter}{m}{
-    \renewcommand{\centerRightLegend}{#1}
+    \renewcommand{\centerCenterLegend}{#1}
+    \node[] () at (labelcenter) {
+        \mbox{%
+            \parbox[c][\keyLabelHeight][c]{\keyLabelWidth}{%
+                \centering
+                \textcolor{legendcolor}{\textsf{\centerCenterLegend\spacehelper}}
+            }%
+        }
+    };
 }
 
 \NewDocumentCommand{\setKeyCenterRight}{m}{
     \renewcommand{\centerRightLegend}{#1}
+    \node[] () at (labelcenter) {
+        \mbox{%
+            \parbox[t][\keyLabelHeight][t]{\keyLabelWidth}{%
+                \raggedleft
+                \textcolor{legendcolor}{\textsf{\centerRightLegend\spacehelper}}
+            }%
+        }
+    };
 }
 
 \NewDocumentCommand{\setKeyBottomLeft}{m}{
@@ -133,7 +173,15 @@
 }
 
 \NewDocumentCommand{\setKeyBottomCenter}{m}{
-    \renewcommand{\bottomRightLegend}{#1}
+    \renewcommand{\bottomCenterLegend}{#1}
+    \node[] () at (labelcenter) {
+        \mbox{%
+            \parbox[b][\keyLabelHeight][b]{\keyLabelWidth}{%
+                \centering
+                \textcolor{legendcolor}{\textsf{\bottomCenterLegend\spacehelper}}
+            }%
+        }
+    };
 }
 
 \NewDocumentCommand{\setKeyBottomRight}{m}{
@@ -163,56 +211,56 @@
 % preset keys for very specific diagrams...?
 \NewDocumentCommand{\LPinky}{} {
     \setKeyColors{baseblue}{topblue}{borderblue}
-    \setKeyBottomRight{L4}
     \placeKey
+    \setKeyBottomRight{L4}
 }
 
 \NewDocumentCommand{\LRing}{} {
     \setKeyColors{basegreen}{topgreen}{bordergreen}
-    \setKeyBottomRight{L3}
     \placeKey
+    \setKeyBottomRight{L3}
 }
 
 \NewDocumentCommand{\LMiddle}{} {
     \setKeyColors{baseyellow}{topyellow}{borderyellow}
-    \setKeyBottomRight{L2}
     \placeKey
+    \setKeyBottomRight{L2}
 }
 
 \NewDocumentCommand{\LIndex}{} {
     \setKeyColors{basered}{topred}{borderred}
-    \setKeyBottomRight{L1}
     \placeKey
+    \setKeyBottomRight{L1}
 }
 
 \NewDocumentCommand{\RIndex}{} {
     \setKeyColors{baseorange}{toporange}{borderorange}
-    \setKeyBottomRight{R1}
     \placeKey
+    \setKeyBottomRight{R1}
 }
 
 \NewDocumentCommand{\RMiddle}{} {
     \setKeyColors{baseyellow}{topyellow}{borderyellow}
-    \setKeyBottomRight{R2}
     \placeKey
+    \setKeyBottomRight{R2}
 }
 
 \NewDocumentCommand{\RRing}{} {
     \setKeyColors{basegreen}{topgreen}{bordergreen}
-    \setKeyBottomRight{R3}
     \placeKey
+    \setKeyBottomRight{R3}
 }
 
 \NewDocumentCommand{\RPinky}{} {
     \setKeyColors{baseblue}{topblue}{borderblue}
-    \setKeyBottomRight{R4}
     \placeKey
+    \setKeyBottomRight{R4}
 }
 
 \NewDocumentCommand{\Thumb}{} {
     \setKeyColors{basepurple}{toppurple}{borderpurple}
-    \setKeyBottomRight{Thumb}
     \placeKey
+    \setKeyBottomRight{Thumb}
 }
 
 \NewDocumentCommand{\placeKey}{} {
@@ -232,8 +280,6 @@
     \filldraw[draw=black,rounded corners=5pt, fill=\keyBaseColor, line width=1pt] (basenorthwest) rectangle (basesoutheast);
 
     \filldraw[draw=\keyBorderColor, rounded corners=3pt, fill=\keyTopColor, line width=1pt] (topnorthwest) rectangle (topsoutheast);
-
-
 
     % \keyDebug
 }
@@ -255,7 +301,7 @@
     \renewcommand{\backgroundHeight}{#2}
 }
 
-\NewDocumentCommand{\placeBackground}{}{ % this should be placed before any keys... unless there is a layer system in tikZ
+\NewDocumentCommand{\placeBackground}{}{ % this is placed in the background layer
     \coordinate (backgroundcenter) at (\backgroundX\U,\backgroundY\U);
     \coordinate (backgroundnorthwest) at ($(backgroundcenter) + (-0.5\U,0.5\U) + (-10pt,10pt)$);
     \coordinate (backgroundsoutheast) at ($(backgroundcenter) + (\fpeval{\backgroundWidth - 1}\U,-\fpeval{\backgroundHeight - 1}\U) + (0.5\U,-0.5\U) + (10pt,-10pt)$);
