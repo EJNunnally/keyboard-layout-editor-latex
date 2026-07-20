@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 This is XeTeX, Version 3.141592653-2.6-0.999996 (TeX Live 2025/dev/Debian) (preloaded format=xelatex 2026.7.14)  18 JUL 2026 16:58
+=======
+This is XeTeX, Version 3.141592653-2.6-0.999996 (TeX Live 2025/dev/Debian) (preloaded format=xelatex 2026.1.14)  19 JUL 2026 22:35
+>>>>>>> 626b3ec (key format changes)
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -535,6 +539,7 @@ L3 programming layer <2025-01-18>
  ***********
  ) 
 Here is how much of TeX's memory you used:
+<<<<<<< HEAD
  14861 strings out of 475852
  350316 string characters out of 5775423
  1035198 words of memory out of 5000000
@@ -542,5 +547,14 @@ Here is how much of TeX's memory you used:
  558957 words of font info for 51 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
  117i,7n,121p,416b,691s stack positions out of 10000i,1000n,20000p,200000b,200000s
+=======
+ 14844 strings out of 473835
+ 349974 string characters out of 5731946
+ 907176 words of memory out of 5000000
+ 37675 multiletter control sequences out of 15000+600000
+ 558949 words of font info for 50 fonts, out of 8000000 for 9000
+ 1348 hyphenation exceptions out of 8191
+ 117i,7n,121p,416b,648s stack positions out of 10000i,1000n,20000p,200000b,200000s
+>>>>>>> 626b3ec (key format changes)
 
 Output written on main.pdf (1 page).

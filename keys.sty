@@ -263,7 +263,7 @@
     \setKeyBottomRight{Thumb}
 }
 
-\NewDocumentCommand{\placeKey}{} {
+\NewDocumentCommand{\keyCoords}{} {
     % set some parameters because I can't read messy length calculations
     \coordinate (keycenter) at (\keyX\U,\keyY\U);
     \coordinate (truecenter) at ($(keycenter) + (\fpeval{0.5*(\keyWidth-1)}\U,-\fpeval{0.5*(\keyHeight-1)}\U)$);
@@ -276,10 +276,20 @@
     \coordinate (basesoutheast) at ($(keycenter) + (\keyWidth\U,-\keyHeight\U) + (-0.5\U,0.5\U)$);
     \setlength{\keyLabelWidth}{\fpeval{(2/3)+\keyWidth-1}\U}
     \setlength{\keyLabelHeight}{\fpeval{(2/3)+\keyHeight-1}\U}
+}
 
+<<<<<<< HEAD
     \filldraw[draw=black,rounded corners=5pt, fill=\keyBaseColor, line width=1pt] (basenorthwest) rectangle (basesoutheast);
 
     \filldraw[draw=\keyBorderColor, rounded corners=3pt, fill=\keyTopColor, line width=1pt] (topnorthwest) rectangle (topsoutheast);
+=======
+\NewDocumentCommand{\placeKey}{} {
+    \keyCoords
+    % \filldraw[draw=black,rounded corners=5pt, fill=\keyBaseColor, line width=1pt] (basenorthwest) rectangle (basesoutheast);
+    \filldraw[draw=black,rounded corners=0pt, fill=\keyTopColor, line width=1pt] (basenorthwest) rectangle (basesoutheast); % test key
+
+    % \filldraw[draw=\keyBorderColor, rounded corners=3pt, fill=\keyTopColor, line width=1pt] (topnorthwest) rectangle (topsoutheast);
+>>>>>>> 626b3ec (key format changes)
 
     % \keyDebug
 }
