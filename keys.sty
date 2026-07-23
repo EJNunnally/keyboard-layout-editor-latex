@@ -278,18 +278,11 @@
     \setlength{\keyLabelHeight}{\fpeval{(2/3)+\keyHeight-1}\U}
 }
 
-<<<<<<< HEAD
+\NewDocumentCommand{\placeKey}{} {
+    \keyCoords
     \filldraw[draw=black,rounded corners=5pt, fill=\keyBaseColor, line width=1pt] (basenorthwest) rectangle (basesoutheast);
 
     \filldraw[draw=\keyBorderColor, rounded corners=3pt, fill=\keyTopColor, line width=1pt] (topnorthwest) rectangle (topsoutheast);
-=======
-\NewDocumentCommand{\placeKey}{} {
-    \keyCoords
-    % \filldraw[draw=black,rounded corners=5pt, fill=\keyBaseColor, line width=1pt] (basenorthwest) rectangle (basesoutheast);
-    \filldraw[draw=black,rounded corners=0pt, fill=\keyTopColor, line width=1pt] (basenorthwest) rectangle (basesoutheast); % test key
-
-    % \filldraw[draw=\keyBorderColor, rounded corners=3pt, fill=\keyTopColor, line width=1pt] (topnorthwest) rectangle (topsoutheast);
->>>>>>> 626b3ec (key format changes)
 
     % \keyDebug
 }
