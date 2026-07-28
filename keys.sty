@@ -1,14 +1,29 @@
-\usepackage{tikz}
+%%% Identification - declare the package
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{keys}[2026/07/26 Keys Package]
+
+%%% Preliminary declarations - import external packages, write commands needed for options
+\RequirePackage{tikz}
 \usetikzlibrary{calc}
 \usetikzlibrary{backgrounds}
-\usepackage{fontspec} % needs either xelatex or lualatex compiler
+\RequirePackage{fontspec} % needs either xelatex or lualatex compiler
+% \RequirePackage[os=win]{menukeys} % nice, but I wanted to make a few tweaks
+\RequirePackage{mymenukeys}
 \setsansfont{Helvetica}
+\renewcommand{\familydefault}{\sfdefault}
+\fontsize{12pt}{12pt}\selectfont % Please note that the front labels are 10pt
 
+\newlength{\baseBorderRadius}
+\newlength{\topBorderRadius}
 \newlength{\U}
-\setlength{\U}{54pt}
 \newlength{\keyLabelWidth}
 \newlength{\keyLabelHeight}
-\newcommand{\spacehelper}{\phantom{lg}} % phantom is helping with the vertical inline spacing
+
+\setlength{\fboxsep}{0pt}
+\setlength{\baseBorderRadius}{5pt}
+\setlength{\topBorderRadius}{3pt}
+\setlength{\U}{54pt}
+% \newcommand{\spacehelper}{\phantom{lg}} % replaced by \strut
 
 % default keyboard colors
 \definecolor{basecolor}{RGB}{\inteval{12*16+12},\inteval{12*16+12},\inteval{12*16+12}} % CCCCCC
@@ -18,31 +33,6 @@
 \definecolor{bgcolor}{RGB}{\inteval{14*16+14},\inteval{14*16+14},\inteval{14*16+14}} % EEEEEE
 \definecolor{bgbordercolor}{RGB}{\inteval{13*16+13},\inteval{13*16+13},\inteval{13*16+13}} % DDDDDD
 
-% other keyboard colors
-\definecolor{basered}{RGB}{234,153,153} % ea9999 
-\definecolor{topred}{RGB}{255,193,193} % ffc1c1
-\definecolor{borderred}{RGB}{211,138,138} % d38a8a
-
-\definecolor{baseorange}{RGB}{246,178,107} % f6b26b
-\definecolor{toporange}{RGB}{255,223,149} % ffdf95
-\definecolor{borderorange}{RGB}{221,160,96} % dda060
-
-\definecolor{baseyellow}{RGB}{255,217,102} % ffd966
-\definecolor{topyellow}{RGB}{255,251,134} % fffb86
-\definecolor{borderyellow}{RGB}{230,195,92} % e6c35c
-
-\definecolor{basegreen}{RGB}{147,196,125} % 93c47d
-\definecolor{topgreen}{RGB}{189,240,166} % bdf0a6
-\definecolor{bordergreen}{RGB}{132,176,113} % 84b071
-
-\definecolor{baseblue}{RGB}{159,197,232} % 9fc5e8
-\definecolor{topblue}{RGB}{204,243,255} % ccf3ff
-\definecolor{borderblue}{RGB}{143,177,209} % 8fb1d1
-
-\definecolor{basepurple}{RGB}{180,167,214} % b4a7d6
-\definecolor{toppurple}{RGB}{221,207,255} % ddcfff
-\definecolor{borderpurple}{RGB}{162,150,193} % a296c1
-
 % call keyboard colors
 \newcommand{\keyBaseColor}{basecolor}
 \newcommand{\keyTopColor}{topcolor}
@@ -51,10 +41,11 @@
 % key position and dimensions
 \newcommand{\keyX}{0}
 \newcommand{\keyY}{0}
-\newcommand{\keyWidth}{1}
-\newcommand{\keyHeight}{1}
-\newcommand{\keyRotationCenter}{(0,0)} % has to be a coordinate; I will regret this later...
-\newcommand{\keyRotationAngle}{0}
+\newcommand{\keyWidth}{1} % Assume \keyWidth >= 1
+\newcommand{\keyHeight}{1} % Assume \keyHeight >= 1
+\newcommand{\keyRotationCenterX}{0}
+\newcommand{\keyRotationCenterY}{0}
+\newcommand{\keyRotationAngle}{0} % \keyRotationAngle is in degrees
 
 % background position and dimensions
 \newcommand{\backgroundX}{}
@@ -62,7 +53,8 @@
 \newcommand{\backgroundWidth}{}
 \newcommand{\backgroundHeight}{}
 
-% key legends
+% ! key legends: This might be changed or removed
+% TODO: make front legends (just for kicks)
 \newcommand{\topLeftLegend}{}
 \newcommand{\topCenterLegend}{}
 \newcommand{\topRightLegend}{}
@@ -72,6 +64,15 @@
 \newcommand{\bottomLeftLegend}{}
 \newcommand{\bottomCenterLegend}{}
 \newcommand{\bottomRightLegend}{}
+
+\NewDocumentCommand{\placeKey}{mmO{1}O{1}} {
+    \setKeyPosition{#1}{#2}
+    \setKeyDimension{#3}{#4}
+    \keyCoords
+    \filldraw[draw=black,rounded corners=\baseBorderRadius, fill=\keyBaseColor, line width=1pt] (basenorthwest) rectangle (basesoutheast);
+    \filldraw[draw=\keyBorderColor, rounded corners=\topBorderRadius, fill=\keyTopColor, line width=1pt] (topnorthwest) rectangle (topsoutheast);
+    \keyDebug
+}
 
 \NewDocumentCommand{\setKeyPosition}{mm}{
     \renewcommand{\keyX}{#1}
@@ -83,117 +84,76 @@
     \renewcommand{\keyHeight}{#2}
 }
 
-\NewDocumentCommand{\setKeyRotation}{mm}{
-    \renewcommand{\keyRotationCenter}{#1} % needs to be a coordinate, I might regret this later
-    \renewcommand{\keyRotationAngle}{#2}
+% TODO: update \placeKey so that keys can rotate; may need to use scopes; look at dm2_pcb_print in Overleaf
+\NewDocumentCommand{\setKeyRotation}{mmm}{
+    \renewcommand{\keyRotationCenterX}{#1}
+    \renewcommand{\keyRotationCenterY}{#2}
+    \renewcommand{\keyRotationAngle}{#3}
+}
+
+\NewDocumentCommand{\keyLabel}{mm}{
+    \node[] () at (labelcenter) {
+        \mbox{%
+            \parbox[#1][\keyLabelHeight][#1]{\keyLabelWidth}{#2\strut}%
+        }
+    };
+}
+
+\NewDocumentCommand{\topLabel}{m}{
+    \keyLabel{t}{#1}
+}
+
+\NewDocumentCommand{\centerLabel}{m}{
+    \keyLabel{c}{#1}
+}
+
+\NewDocumentCommand{\bottomLabel}{m}{
+    \keyLabel{b}{#1}
 }
 
 \NewDocumentCommand{\setKeyTopLeft}{m}{
     \renewcommand{\topLeftLegend}{#1}
-    \node[] () at (labelcenter) {
-        \mbox{%
-            \parbox[t][\keyLabelHeight][t]{\keyLabelWidth}{%
-                \raggedright
-                \textcolor{legendcolor}{\textsf{\topLeftLegend\spacehelper}}
-            }%
-        }
-    };
+    \topLabel{\raggedright\topLeftLegend}
 }
 
 \NewDocumentCommand{\setKeyTopCenter}{m}{
     \renewcommand{\topCenterLegend}{#1}
-    \node[] () at (labelcenter) {
-        \mbox{%
-            \parbox[t][\keyLabelHeight][t]{\keyLabelWidth}{%
-                \centering
-                \textcolor{legendcolor}{\textsf{\topCenterLegend\spacehelper}}
-            }%
-        }
-    };
+    \topLabel{\centering\topCenterLegend}
 }
 
 \NewDocumentCommand{\setKeyTopRight}{m}{
     \renewcommand{\topRightLegend}{#1}
-    \node[] () at (labelcenter) {
-        \mbox{%
-            \parbox[t][\keyLabelHeight][t]{\keyLabelWidth}{%
-                \raggedleft
-                \textcolor{legendcolor}{\textsf{\topRightLegend\spacehelper}}
-            }%
-        }
-    };
+    \topLabel{\raggedleft\topCenterLegend}
 }
 
 \NewDocumentCommand{\setKeyCenterLeft}{m}{
     \renewcommand{\centerLeftLegend}{#1}
-    \node[] () at (labelcenter) {
-        \mbox{%
-            \parbox[c][\keyLabelHeight][c]{\keyLabelWidth}{%
-                \raggedright
-                \textcolor{legendcolor}{\textsf{\centerLeftLegend\spacehelper}}
-            }%
-        }
-    };
+    \centerLabel{\raggedright\centerLeftLegend}
 }
 
 \NewDocumentCommand{\setKeyCenterCenter}{m}{
     \renewcommand{\centerCenterLegend}{#1}
-    \node[] () at (labelcenter) {
-        \mbox{%
-            \parbox[c][\keyLabelHeight][c]{\keyLabelWidth}{%
-                \centering
-                \textcolor{legendcolor}{\textsf{\centerCenterLegend\spacehelper}}
-            }%
-        }
-    };
+    \centerLabel{\centering\centerCenterLegend}
 }
 
 \NewDocumentCommand{\setKeyCenterRight}{m}{
     \renewcommand{\centerRightLegend}{#1}
-    \node[] () at (labelcenter) {
-        \mbox{%
-            \parbox[t][\keyLabelHeight][t]{\keyLabelWidth}{%
-                \raggedleft
-                \textcolor{legendcolor}{\textsf{\centerRightLegend\spacehelper}}
-            }%
-        }
-    };
+    \centerLabel{\raggedleft\centerRightLegend}
 }
 
 \NewDocumentCommand{\setKeyBottomLeft}{m}{
     \renewcommand{\bottomLeftLegend}{#1}
-    \node[] () at (labelcenter) {
-        \mbox{%
-            \parbox[b][\keyLabelHeight][b]{\keyLabelWidth}{%
-                \raggedright
-                \textcolor{legendcolor}{\textsf{\bottomLeftLegend\spacehelper}}
-            }%
-        }
-    };
+    \bottomLabel{\raggedright\bottomLeftLegend}
 }
 
 \NewDocumentCommand{\setKeyBottomCenter}{m}{
     \renewcommand{\bottomCenterLegend}{#1}
-    \node[] () at (labelcenter) {
-        \mbox{%
-            \parbox[b][\keyLabelHeight][b]{\keyLabelWidth}{%
-                \centering
-                \textcolor{legendcolor}{\textsf{\bottomCenterLegend\spacehelper}}
-            }%
-        }
-    };
+    \bottomLabel{\centering\bottomCenterLegend}
 }
 
 \NewDocumentCommand{\setKeyBottomRight}{m}{
     \renewcommand{\bottomRightLegend}{#1}
-    \node[] () at (labelcenter) {
-        \mbox{%
-            \parbox[b][\keyLabelHeight][b]{\keyLabelWidth}{%
-                \raggedleft
-                \textcolor{legendcolor}{\textsf{\textbf{\spacehelper\bottomRightLegend}}}
-            }%
-        }
-    };
+    \bottomLabel{\raggedleft\bottomRightLegend}
 }
 
 \NewDocumentCommand{\setKeyColors}{mmm}{
@@ -208,61 +168,6 @@
     \renewcommand{\keyBorderColor}{bordercolor}
 }
 
-% preset keys for very specific diagrams...?
-\NewDocumentCommand{\LPinky}{} {
-    \setKeyColors{baseblue}{topblue}{borderblue}
-    \placeKey
-    \setKeyBottomRight{L4}
-}
-
-\NewDocumentCommand{\LRing}{} {
-    \setKeyColors{basegreen}{topgreen}{bordergreen}
-    \placeKey
-    \setKeyBottomRight{L3}
-}
-
-\NewDocumentCommand{\LMiddle}{} {
-    \setKeyColors{baseyellow}{topyellow}{borderyellow}
-    \placeKey
-    \setKeyBottomRight{L2}
-}
-
-\NewDocumentCommand{\LIndex}{} {
-    \setKeyColors{basered}{topred}{borderred}
-    \placeKey
-    \setKeyBottomRight{L1}
-}
-
-\NewDocumentCommand{\RIndex}{} {
-    \setKeyColors{baseorange}{toporange}{borderorange}
-    \placeKey
-    \setKeyBottomRight{R1}
-}
-
-\NewDocumentCommand{\RMiddle}{} {
-    \setKeyColors{baseyellow}{topyellow}{borderyellow}
-    \placeKey
-    \setKeyBottomRight{R2}
-}
-
-\NewDocumentCommand{\RRing}{} {
-    \setKeyColors{basegreen}{topgreen}{bordergreen}
-    \placeKey
-    \setKeyBottomRight{R3}
-}
-
-\NewDocumentCommand{\RPinky}{} {
-    \setKeyColors{baseblue}{topblue}{borderblue}
-    \placeKey
-    \setKeyBottomRight{R4}
-}
-
-\NewDocumentCommand{\Thumb}{} {
-    \setKeyColors{basepurple}{toppurple}{borderpurple}
-    \placeKey
-    \setKeyBottomRight{Thumb}
-}
-
 \NewDocumentCommand{\keyCoords}{} {
     % set some parameters because I can't read messy length calculations
     \coordinate (keycenter) at (\keyX\U,\keyY\U);
@@ -274,24 +179,16 @@
     \coordinate (topsoutheast) at ($(labelsoutheast) + (3pt,-3pt)$);
     \coordinate (basenorthwest) at ($(keycenter) + (-0.5\U,0.5\U)$);
     \coordinate (basesoutheast) at ($(keycenter) + (\keyWidth\U,-\keyHeight\U) + (-0.5\U,0.5\U)$);
-    \setlength{\keyLabelWidth}{\fpeval{(2/3)+\keyWidth-1}\U}
-    \setlength{\keyLabelHeight}{\fpeval{(2/3)+\keyHeight-1}\U}
-}
-
-\NewDocumentCommand{\placeKey}{} {
-    \keyCoords
-    \filldraw[draw=black,rounded corners=5pt, fill=\keyBaseColor, line width=1pt] (basenorthwest) rectangle (basesoutheast);
-
-    \filldraw[draw=\keyBorderColor, rounded corners=3pt, fill=\keyTopColor, line width=1pt] (topnorthwest) rectangle (topsoutheast);
-
-    % \keyDebug
+    \coordinate (basesoutheast) at ($(basenorthwest) + (\keyWidth\U,-\keyHeight\U)$);
+    \setlength{\keyLabelWidth}{\dimeval{\keyWidth\U-18pt}}
+    \setlength{\keyLabelHeight}{\dimeval{\keyHeight\U-18pt}}
 }
 
 \NewDocumentCommand{\keyDebug}{}{
-    \draw[red] (labelnorthwest) rectangle (labelsoutheast); % Are my labels extending to where they should be?
-    \fill[red] (keycenter) circle (1pt) node {\tiny{keycenter}}; % Where is the key's position?
-    \fill[red] (truecenter) circle (1pt) node {\tiny{truecenter}}; % Where is the center of the key?
-    \fill[red] (labelcenter) circle (1pt) node {\tiny{labelcenter}}; % Where is the center of the key?
+    % \draw[red] (labelnorthwest) rectangle (labelsoutheast); % Are my labels extending to where they should be?
+    % \fill[red] (keycenter) circle (1pt) node {\tiny{keycenter}}; % Where is the key's position?
+    % \fill[red] (truecenter) circle (1pt) node {\tiny{truecenter}}; % Where is the center of the key?
+    % \fill[red] (labelcenter) circle (1pt) node {\tiny{labelcenter}}; % Where is the center of the key?
 }
 
 \NewDocumentCommand{\setBackgroundPosition}{mm}{ % this should be the position of the top left key
@@ -304,7 +201,9 @@
     \renewcommand{\backgroundHeight}{#2}
 }
 
-\NewDocumentCommand{\placeBackground}{}{ % this is placed in the background layer
+\NewDocumentCommand{\placeBackground}{mmmm}{ % this is placed in the background layer
+    \setBackgroundPosition{#1}{#2}
+    \setBackgroundDimension{#3}{#4}
     \coordinate (backgroundcenter) at (\backgroundX\U,\backgroundY\U);
     \coordinate (backgroundnorthwest) at ($(backgroundcenter) + (-0.5\U,0.5\U) + (-10pt,10pt)$);
     \coordinate (backgroundsoutheast) at ($(backgroundcenter) + (\fpeval{\backgroundWidth - 1}\U,-\fpeval{\backgroundHeight - 1}\U) + (0.5\U,-0.5\U) + (10pt,-10pt)$);
@@ -312,3 +211,62 @@
         \filldraw[fill=bgcolor, draw=bgbordercolor, rounded corners=0pt, line width=1pt] (backgroundnorthwest) rectangle (backgroundsoutheast);
     \end{scope}
 }
+
+%%% Options - declare and process options
+\DeclareOption{Denelson}{
+    % \setsansfont{Arial} % looks more like Helvetica than Arial imo
+    \setlength{\baseBorderRadius}{0pt}
+    \setlength{\topBorderRadius}{0pt}
+
+    % default keyboard colors; no top, border, or background colors
+    \definecolor{basecolor}{RGB}{255,255,255} % FFFFFF
+    \definecolor{modcolor1}{RGB}{240,240,240} % F0F0F0
+    \definecolor{modcolor2}{RGB}{224,224,224} % E0E0E0
+    \definecolor{legendcolor}{RGB}{0,0,0} % 000000
+    \NewDocumentCommand{\superKey}{}{
+        \renewcommand{\keyBaseColor}{modcolor1}
+    }
+
+    \NewDocumentCommand{\modKey}{}{
+        \renewcommand{\keyBaseColor}{modcolor2}
+    }
+
+    \RenewDocumentCommand{\keyCoords}{} {
+        \coordinate (keycenter) at (\keyX\U,\keyY\U);
+        \coordinate (truecenter) at ($(keycenter) + (\fpeval{0.5*(\keyWidth-1)}\U,-\fpeval{0.5*(\keyHeight-1)}\U)$);
+        \coordinate (labelcenter) at (truecenter);
+        \coordinate (labelnorthwest) at ($(labelcenter) + (-21pt,21pt) + (-\fpeval{0.5*(\keyWidth-1)}\U,\fpeval{0.5*(\keyHeight-1)}\U)$);
+        \coordinate (labelsoutheast) at ($(labelcenter) + (21pt,-21pt) + (\fpeval{0.5*(\keyWidth-1)}\U,-\fpeval{0.5*(\keyHeight-1)}\U)$);
+        \coordinate (basenorthwest) at ($(keycenter) + (-0.5\U,0.5\U)$);
+        \coordinate (basesoutheast) at ($(basenorthwest) + (\keyWidth\U,-\keyHeight\U)$);
+        \setlength{\keyLabelWidth}{\dimeval{\keyWidth\U-12pt}}
+        \setlength{\keyLabelHeight}{\dimeval{\keyHeight\U-12pt}}
+    }
+
+    \RenewDocumentCommand{\placeKey}{mmO{1}O{1}} {
+        \setKeyPosition{#1}{#2}
+        \setKeyDimension{#3}{#4}
+        \keyCoords
+        \filldraw[draw=black,rounded corners=\baseBorderRadius, fill=\keyBaseColor, line width=1pt] (basenorthwest) rectangle (basesoutheast);
+        \keyDebug
+    }
+
+    \RenewDocumentCommand{\setKeyTopLeft}{m}{
+        \renewcommand{\topLeftLegend}{#1}
+        \topLabel{\raggedright\textbf\topLeftLegend}
+    }
+
+    \RenewDocumentCommand{\setKeyCenterCenter}{m}{
+        \renewcommand{\topLeftLegend}{#1}
+        \centerLabel{\centering\textbf\topLeftLegend}
+    }
+
+    \RenewDocumentCommand{\setKeyBottomLeft}{m}{
+        \renewcommand{\bottomLeftLegend}{#1}
+        \bottomLabel{\raggedright\textbf\bottomLeftLegend}
+    }
+
+}
+
+\ProcessOptions\relax
+\AtBeginDocument{\color{legendcolor}}

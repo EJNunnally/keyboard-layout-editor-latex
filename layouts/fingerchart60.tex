@@ -1,287 +1,379 @@
+%%% Start with some preliminary definitions that are very specific to this layout
+\fontsize{12pt}{12pt}\selectfont % Please note that the front labels are 10pt
+% other keyboard colors
+\definecolor{basered}{RGB}{234,153,153} % ea9999 
+\definecolor{topred}{RGB}{255,193,193} % ffc1c1
+\definecolor{borderred}{RGB}{211,138,138} % d38a8a
+
+\definecolor{baseorange}{RGB}{246,178,107} % f6b26b
+\definecolor{toporange}{RGB}{255,223,149} % ffdf95
+\definecolor{borderorange}{RGB}{221,160,96} % dda060
+
+\definecolor{baseyellow}{RGB}{255,217,102} % ffd966
+\definecolor{topyellow}{RGB}{255,251,134} % fffb86
+\definecolor{borderyellow}{RGB}{230,195,92} % e6c35c
+
+\definecolor{basegreen}{RGB}{147,196,125} % 93c47d
+\definecolor{topgreen}{RGB}{189,240,166} % bdf0a6
+\definecolor{bordergreen}{RGB}{132,176,113} % 84b071
+
+\definecolor{baseblue}{RGB}{159,197,232} % 9fc5e8
+\definecolor{topblue}{RGB}{204,243,255} % ccf3ff
+\definecolor{borderblue}{RGB}{143,177,209} % 8fb1d1
+
+\definecolor{basepurple}{RGB}{180,167,214} % b4a7d6
+\definecolor{toppurple}{RGB}{221,207,255} % ddcfff
+\definecolor{borderpurple}{RGB}{162,150,193} % a296c1
+
+% preset keys for very specific diagrams...?
+\NewDocumentCommand{\redKey}{}{\setKeyColors{basered}{topred}{borderred}}
+
+\NewDocumentCommand{\orangeKey}{}{\setKeyColors{baseorange}{toporange}{borderorange}}
+
+\NewDocumentCommand{\yellowKey}{}{\setKeyColors{baseyellow}{topyellow}{borderyellow}}
+
+\NewDocumentCommand{\greenKey}{}{\setKeyColors{basegreen}{topgreen}{bordergreen}}
+
+\NewDocumentCommand{\blueKey}{}{\setKeyColors{baseblue}{topblue}{borderblue}}
+
+\NewDocumentCommand{\purpleKey}{}{\setKeyColors{basepurple}{toppurple}{borderpurple}}
+
+\RenewDocumentCommand{\setKeyBottomRight}{m}{
+    \renewcommand{\bottomRightLegend}{#1}
+    \bottomLabel{\raggedleft\textbf\bottomRightLegend}
+}
 % starting Position is 0,0; starting Dimension is 1x1
-\LPinky
+\blueKey
+\placeKey{0}{0}
 \setKeyTopLeft{\~{}}
 \setKeyBottomLeft{\textasciigrave}
+\setKeyBottomRight{L4}
 
-\setKeyPosition{1}{0}
-\LPinky
+\blueKey
+\placeKey{1}{0}
 \setKeyTopLeft{!}
 \setKeyBottomLeft{1}
+\setKeyBottomRight{L4}
 
-\setKeyPosition{2}{0}
-\LRing
+\greenKey
+\placeKey{2}{0}
 \setKeyTopLeft{@}
 \setKeyBottomLeft{2}
+\setKeyBottomRight{L3}
 
-\setKeyPosition{3}{0}
-\LMiddle
+\yellowKey
+\placeKey{3}{0}
 \setKeyTopLeft{\#}
 \setKeyBottomLeft{3}
+\setKeyBottomRight{L2}
 
-\setKeyPosition{4}{0}
-\LIndex
+\redKey
+\placeKey{4}{0}
 \setKeyTopLeft{\$}
 \setKeyBottomLeft{4}
+\setKeyBottomRight{L1}
 
-\setKeyPosition{5}{0}
-\LIndex
+% \redKey
+\placeKey{5}{0}
 \setKeyTopLeft{\%}
 \setKeyBottomLeft{5}
+\setKeyBottomRight{L1}
 
-\setKeyPosition{6}{0}
-\RIndex
+\orangeKey
+\placeKey{6}{0}
 \setKeyTopLeft{\textasciicircum}
 \setKeyBottomLeft{6}
+\setKeyBottomRight{R1}
 
-\setKeyPosition{7}{0}
-\RIndex
+% \orangeKey
+\placeKey{7}{0}
 \setKeyTopLeft{\&}
 \setKeyBottomLeft{7}
+\setKeyBottomRight{R1}
 
-\setKeyPosition{8}{0}
-\RMiddle
+\yellowKey
+\placeKey{8}{0}
 \setKeyTopLeft{*}
 \setKeyBottomLeft{8}
+\setKeyBottomRight{R2}
 
-\setKeyPosition{9}{0}
-\RRing
+\greenKey
+\placeKey{9}{0}
 \setKeyTopLeft{(}
 \setKeyBottomLeft{9}
+\setKeyBottomRight{R3}
 
-\setKeyPosition{10}{0}
-\RPinky
+\blueKey
+\placeKey{10}{0}
 \setKeyTopLeft{)}
 \setKeyBottomLeft{0}
+\setKeyBottomRight{R4}
 
-\setKeyPosition{11}{0}
-\RPinky
+% \blueKey
+\placeKey{11}{0}
 \setKeyTopLeft{\_}
 \setKeyBottomLeft{-}
+\setKeyBottomRight{R4}
 
-\setKeyPosition{12}{0}
-\RPinky
+% \blueKey
+\placeKey{12}{0}
 \setKeyTopLeft{+}
 \setKeyBottomLeft{=}
+\setKeyBottomRight{R4}
 
-\setKeyPosition{13}{0}
-\setKeyDimension{2}{1}
-\RPinky
+% \blueKey
+\placeKey{13}{0}[2][1]
 \setKeyTopLeft{Backspace}
 \setKeyBottomLeft{}
+\setKeyBottomRight{R4}
 
-\setKeyPosition{0}{1}
-\setKeyDimension{1.5}{1}
-\LPinky
+% \blueKey
+\placeKey{0}{1}[1.5][1]
 \setKeyTopLeft{Tab}
+\setKeyBottomRight{L4}
 
-\setKeyPosition{1.5}{1}
-\setKeyDimension{1}{1}
-\LPinky
+% \blueKey
+\placeKey{1.5}{1}
 \setKeyTopLeft{Q}
+\setKeyBottomRight{L4}
 
-\setKeyPosition{2.5}{1}
-\LRing
+\greenKey
+\placeKey{2.5}{1}
 \setKeyTopLeft{W}
+\setKeyBottomRight{L3}
 
-\setKeyPosition{3.5}{1}
-\LMiddle
+\yellowKey
+\placeKey{3.5}{1}
 \setKeyTopLeft{E}
+\setKeyBottomRight{L2}
 
-\setKeyPosition{4.5}{1}
-\LIndex
+\redKey
+\placeKey{4.5}{1}
 \setKeyTopLeft{R}
+\setKeyBottomRight{L1}
 
-\setKeyPosition{5.5}{1}
-\LIndex
+% \redKey
+\placeKey{5.5}{1}
 \setKeyTopLeft{T}
+\setKeyBottomRight{L1}
 
-\setKeyPosition{6.5}{1}
-\RIndex
+\orangeKey
+\placeKey{6.5}{1}
 \setKeyTopLeft{Y}
+\setKeyBottomRight{R1}
 
-\setKeyPosition{7.5}{1}
-\RIndex
+% \orangeKey
+\placeKey{7.5}{1}
 \setKeyTopLeft{U}
+\setKeyBottomRight{R1}
 
-\setKeyPosition{8.5}{1}
-\RMiddle
+\yellowKey
+\placeKey{8.5}{1}
 \setKeyTopLeft{I}
+\setKeyBottomRight{R2}
 
-\setKeyPosition{9.5}{1}
-\RRing
+\greenKey
+\placeKey{9.5}{1}
 \setKeyTopLeft{O}
+\setKeyBottomRight{R3}
 
-\setKeyPosition{10.5}{1}
-\RPinky
+\blueKey
+\placeKey{10.5}{1}
 \setKeyTopLeft{P}
+\setKeyBottomRight{R4}
 
-\setKeyPosition{11.5}{1}
-\RPinky
+% \blueKey
+\placeKey{11.5}{1}
 \setKeyTopLeft{\{}
 \setKeyBottomLeft{[}
+\setKeyBottomRight{R4}
 
-\setKeyPosition{12.5}{1}
-\RPinky
+% \blueKey
+\placeKey{12.5}{1}
 \setKeyTopLeft{\}}
 \setKeyBottomLeft{]}
+\setKeyBottomRight{R4}
 
-\setKeyPosition{13.5}{1}
-\setKeyDimension{1.5}{1}
-\RPinky
+% \blueKey
+\placeKey{13.5}{1}[1.5][1]
 \setKeyTopLeft{|}
 \setKeyBottomLeft{\textbackslash}
+\setKeyBottomRight{R4}
 
-\setKeyPosition{0}{2}
-\setKeyDimension{1.75}{1}
-\LPinky
-\setKeyTopLeft{Caps}
+% \blueKey
+\placeKey{0}{2}[1.75][1]
+\setKeyTopLeft{Caps Lock}
 \setKeyBottomLeft{}
+\setKeyBottomRight{L4}
 
-\setKeyPosition{1.75}{2}
-\setKeyDimension{1}{1}
-\LPinky
+% \blueKey
+\placeKey{1.75}{2}
 \setKeyTopLeft{A}
+\setKeyBottomRight{L4}
 
-\setKeyPosition{2.75}{2}
-\LRing
+\greenKey
+\placeKey{2.75}{2}
 \setKeyTopLeft{S}
+\setKeyBottomRight{L3}
 
-\setKeyPosition{3.75}{2}
-\LMiddle
+\yellowKey
+\placeKey{3.75}{2}
 \setKeyTopLeft{D}
+\setKeyBottomRight{L2}
 
-\setKeyPosition{4.75}{2}
-\LIndex
+\redKey
+\placeKey{4.75}{2}
 \setKeyTopLeft{F}
+\setKeyBottomRight{L1}
 
-\setKeyPosition{5.75}{2}
-\LIndex
+% \redKey
+\placeKey{5.75}{2}
 \setKeyTopLeft{G}
+\setKeyBottomRight{L1}
 
-\setKeyPosition{6.75}{2}
-\RIndex
+\orangeKey
+\placeKey{6.75}{2}
 \setKeyTopLeft{H}
+\setKeyBottomRight{R1}
 
-\setKeyPosition{7.75}{2}
-\RIndex
+% \orangeKey
+\placeKey{7.75}{2}
 \setKeyTopLeft{J}
+\setKeyBottomRight{R1}
 
-\setKeyPosition{8.75}{2}
-\RMiddle
+\yellowKey
+\placeKey{8.75}{2}
 \setKeyTopLeft{K}
+\setKeyBottomRight{R2}
 
-\setKeyPosition{9.75}{2}
-\RRing
+\greenKey
+\placeKey{9.75}{2}
 \setKeyTopLeft{L}
+\setKeyBottomRight{R3}
 
-\setKeyPosition{10.75}{2}
-\RPinky
+\blueKey
+\placeKey{10.75}{2}
 \setKeyTopLeft{:}
 \setKeyBottomLeft{;}
+\setKeyBottomRight{R4}
 
-\setKeyPosition{11.75}{2}
-\RPinky
-% \setKeyTopLeft{"} % not the right one
-% \setKeyBottomLeft{'} % not the right one
+% \blueKey
+\placeKey{11.75}{2}
 \setKeyTopLeft{\textquotedbl}
 \setKeyBottomLeft{\textquotesingle}
+\setKeyBottomRight{R4}
 
-\setKeyPosition{12.75}{2}
-\setKeyDimension{2.25}{1}
-\RPinky
+% \blueKey
+\placeKey{12.75}{2}[2.25][1]
 \setKeyTopLeft{Enter}
 \setKeyBottomLeft{}
+\setKeyBottomRight{R4}
 
-\setKeyPosition{0}{3}
-% same key dimension
-\LPinky
+% \blueKey
+\placeKey{0}{3}[2.25][1]
 \setKeyTopLeft{Shift}
+\setKeyBottomRight{L4}
 
-\setKeyPosition{2.25}{3}
-\setKeyDimension{1}{1}
-\LPinky
+% \blueKey
+\placeKey{2.25}{3}
 \setKeyTopLeft{Z}
+\setKeyBottomRight{L4}
 
-\setKeyPosition{3.25}{3}
-\LRing
+\greenKey
+\placeKey{3.25}{3}
 \setKeyTopLeft{X}
+\setKeyBottomRight{L3}
 
-\setKeyPosition{4.25}{3}
-\LMiddle
+\yellowKey
+\placeKey{4.25}{3}
 \setKeyTopLeft{C}
+\setKeyBottomRight{L2}
 
-\setKeyPosition{5.25}{3}
-\LIndex
+\redKey
+\placeKey{5.25}{3}
 \setKeyTopLeft{V}
+\setKeyBottomRight{L1}
 
-\setKeyPosition{6.25}{3}
-\LIndex
+% \redKey
+\placeKey{6.25}{3}
 \setKeyTopLeft{B}
+\setKeyBottomRight{L1}
 
-\setKeyPosition{7.25}{3}
-\RIndex
+\orangeKey
+\placeKey{7.25}{3}
 \setKeyTopLeft{N}
+\setKeyBottomRight{R1}
 
-\setKeyPosition{8.25}{3}
-\RIndex
+% \orangeKey
+\placeKey{8.25}{3}
 \setKeyTopLeft{M}
+\setKeyBottomRight{R1}
 
-\setKeyPosition{9.25}{3}
-\RMiddle
+\yellowKey
+\placeKey{9.25}{3}
 \setKeyTopLeft{<}
 \setKeyBottomLeft{,}
+\setKeyBottomRight{R2}
 
-\setKeyPosition{10.25}{3}
-\RRing
+\greenKey
+\placeKey{10.25}{3}
 \setKeyTopLeft{>}
 \setKeyBottomLeft{.}
+\setKeyBottomRight{R3}
 
-\setKeyPosition{11.25}{3}
-\RPinky
+\blueKey
+\placeKey{11.25}{3}
 \setKeyTopLeft{?}
 \setKeyBottomLeft{/}
+\setKeyBottomRight{R4}
 
-\setKeyPosition{12.25}{3}
-\setKeyDimension{2.75}{1}
-\RPinky
+% \blueKey
+\placeKey{12.25}{3}[2.75][1]
 \setKeyTopLeft{Shift}
 \setKeyBottomLeft{}
+\setKeyBottomRight{R4}
 
-\setKeyPosition{0}{4}
-\setKeyDimension{1.25}{1}
-\LPinky
+% \blueKey
+\placeKey{0}{4}[1.25][1]
 \setKeyTopLeft{Ctrl}
+\setKeyBottomRight{L4}
 
-\setKeyPosition{1.25}{4}
-\LPinky
+% \blueKey
+\placeKey{1.25}{4}[1.25][1]
 \setKeyTopLeft{Win}
+\setKeyBottomRight{L4}
 
-\setKeyPosition{2.5}{4}
-\Thumb
+\purpleKey
+\placeKey{2.5}{4}[1.25][1]
 \setKeyTopLeft{Alt}
+\setKeyBottomRight{Thumb}
 
-\setKeyPosition{3.75}{4}
-\setKeyDimension{6.25}{1}
-\Thumb
+% \purpleKey
+\placeKey{3.75}{4}[6.25][1]
 \setKeyTopLeft{}
+\setKeyBottomRight{Thumb}
 
-\setKeyPosition{10}{4}
-\setKeyDimension{1.25}{1}
-\Thumb
+% \purpleKey
+\placeKey{10}{4}[1.25][1]
 \setKeyTopLeft{Alt}
+\setKeyBottomRight{Thumb}
 
-\setKeyPosition{11.25}{4}
-\RPinky
+\blueKey
+\placeKey{11.25}{4}[1.25][1]
 \setKeyTopLeft{Win}
+\setKeyBottomRight{R4}
 
-\setKeyPosition{12.5}{4}
-\RPinky
+% \blueKey
+\placeKey{12.5}{4}[1.25][1]
 \setKeyTopLeft{Menu}
+\setKeyBottomRight{R4}
 
-\setKeyPosition{13.75}{4}
-\RPinky
+% \blueKey
+\placeKey{13.75}{4}[1.25][1]
 \setKeyTopLeft{Ctrl}
+\setKeyBottomRight{R4}
 
 \setBackgroundPosition{0}{0}
 \setBackgroundDimension{15}{5}
 \placeBackground
+

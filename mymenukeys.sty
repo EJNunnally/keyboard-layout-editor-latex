@@ -1,0 +1,56 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{mymenukeys}[2026/07/28 My Menu Keys Package] % modified from the menukeys package because I didn't like the thinness of some of the lines
+\RequirePackage{tikz}
+\usetikzlibrary{arrows.meta}
+\tikzset{
+   menukeys key symbol/.style={
+      rounded corners=0pt,
+      line width=1.5pt,
+      baseline={(0,0)},
+   },
+   menukeys thick/.style={line width=2.5pt},
+}
+
+\normalsize
+\newcommand{\shift}{%
+   \begin{tikzpicture}[yshift=-0.1ex,menukeys key symbol]
+      \draw (3pt,0) -- (11pt,0) -- (11pt,12pt) -- %
+            (15pt,12pt) -- (7pt,20pt) -- (-1pt,12pt) -- %
+            (3pt,12pt) -- cycle;
+   \end{tikzpicture}%
+}
+
+\newcommand{\capslock}{%
+   % \begin{tikzpicture}[yscale=-1,yshift=-1.8ex,menukeys key symbol]
+   %    \draw (3pt,0) -- (11pt,0) -- (11pt,12pt) -- %
+   %          (15pt,12pt) -- (7pt,20pt) -- (-1pt,12pt) -- %
+   %          (3pt,12pt) -- cycle;
+   % \end{tikzpicture}%
+   \begin{tikzpicture}[yshift=-0.1ex,menukeys key symbol]
+       \filldraw (3pt,0) -- (11pt,0) -- (11pt,12pt) -- %
+            (15pt,12pt) -- (7pt,20pt) -- (-1pt,12pt) -- %
+            (3pt,12pt) -- cycle;
+   \end{tikzpicture}%
+}
+
+\newcommand{\tab}{%
+    \begin{tikzpicture}[yshift=12pt,line width=2.5pt,baseline={(0,0)}]
+      \draw [arrows={Triangle[length=10pt,width=10pt]}-] (2.5pt,0) -- (30pt,0);
+      \draw (2.5pt,-5pt) -- (2.5pt,5pt);
+      \draw [arrows=-{Triangle[length=10pt,width=10pt]}] (2.5pt,-12pt) -- (30pt,-12pt);
+      \draw (30pt,-17pt) -- (30pt,-7pt);
+   \end{tikzpicture}%
+}
+
+\newcommand{\return}{%
+   \begin{tikzpicture}[yshift=0.65ex,menukeys key symbol]
+       \draw [arrows={-Stealth[inset=0]},menukeys thick] (32pt,12pt) |- (0,0);
+   \end{tikzpicture}%
+}
+
+\newcommand{\backspace}{%
+   \begin{tikzpicture}[yshift=0.65ex,menukeys key symbol]
+       \draw [arrows={Stealth[inset=0]-},menukeys thick] (0,0) -- (3em,0);
+   \end{tikzpicture}%
+}
+

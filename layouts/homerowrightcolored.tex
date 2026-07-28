@@ -1,0 +1,190 @@
+\fontsize{20pt}{20pt}\selectfont
+\newcommand{\modfont}[1]{{\fontsize{16pt}{16pt}\selectfont{}#1}}
+\newcommand{\ringOffset}{0.75}
+\newcommand{\middleOffset}{\fpeval{\ringOffset+0.75}}
+\newcommand{\indexOffset}{\fpeval{\middleOffset+0.75}}
+
+% other keyboard colors
+\definecolor{basered}{RGB}{234,153,153} % ea9999 
+\definecolor{topred}{RGB}{255,193,193} % ffc1c1
+\definecolor{borderred}{RGB}{211,138,138} % d38a8a
+
+\definecolor{baseorange}{RGB}{246,178,107} % f6b26b
+\definecolor{toporange}{RGB}{255,223,149} % ffdf95
+\definecolor{borderorange}{RGB}{221,160,96} % dda060
+
+\definecolor{baseyellow}{RGB}{255,217,102} % ffd966
+\definecolor{topyellow}{RGB}{255,251,134} % fffb86
+\definecolor{borderyellow}{RGB}{230,195,92} % e6c35c
+
+\definecolor{basegreen}{RGB}{147,196,125} % 93c47d
+\definecolor{topgreen}{RGB}{189,240,166} % bdf0a6
+\definecolor{bordergreen}{RGB}{132,176,113} % 84b071
+
+\definecolor{baseblue}{RGB}{159,197,232} % 9fc5e8
+\definecolor{topblue}{RGB}{204,243,255} % ccf3ff
+\definecolor{borderblue}{RGB}{143,177,209} % 8fb1d1
+
+\definecolor{basepurple}{RGB}{180,167,214} % b4a7d6
+\definecolor{toppurple}{RGB}{221,207,255} % ddcfff
+\definecolor{borderpurple}{RGB}{162,150,193} % a296c1
+
+% preset keys for very specific diagrams...?
+\NewDocumentCommand{\redKey}{}{\setKeyColors{basered}{topred}{borderred}}
+
+\NewDocumentCommand{\orangeKey}{}{\setKeyColors{baseorange}{toporange}{borderorange}}
+
+\NewDocumentCommand{\yellowKey}{}{\setKeyColors{baseyellow}{topyellow}{borderyellow}}
+
+\NewDocumentCommand{\greenKey}{}{\setKeyColors{basegreen}{topgreen}{bordergreen}}
+
+\NewDocumentCommand{\blueKey}{}{\setKeyColors{baseblue}{topblue}{borderblue}}
+
+\NewDocumentCommand{\purpleKey}{}{\setKeyColors{basepurple}{toppurple}{borderpurple}}
+
+\node at (\fpeval{0.5+6-\indexOffset}\U,1\U) {\textbf{Index\strut}};
+\node at (\fpeval{8-\middleOffset}\U,1\U) {\textbf{Middle}\strut};
+\node at (\fpeval{9-\ringOffset}\U,1\U) {\textbf{Ring}\strut};
+\node at (12\U,1\U) {\textbf{Pinky}\strut};
+
+\redKey
+\placeKey{\fpeval{6-\indexOffset}}{0}
+\setKeyTopLeft{\textasciicircum}
+\setKeyBottomLeft{6}
+
+\placeKey{\fpeval{7-\indexOffset}}{0}
+\setKeyTopLeft{\&}
+\setKeyBottomLeft{7}
+
+\orangeKey
+\placeKey{\fpeval{8-\middleOffset}}{0}
+\setKeyTopLeft{*}
+\setKeyBottomLeft{8}
+
+\yellowKey
+\placeKey{\fpeval{9-\ringOffset}}{0}
+\setKeyTopLeft{(}
+\setKeyBottomLeft{9}
+
+\greenKey
+\placeKey{10}{0}
+\setKeyTopLeft{)}
+\setKeyBottomLeft{0}
+
+\placeKey{11}{0}
+\setKeyTopLeft{\_}
+\setKeyBottomLeft{-}
+
+\placeKey{12}{0}
+\setKeyTopLeft{+}
+\setKeyBottomLeft{=}
+
+\placeKey{13}{0}[2][1]
+\setKeyTopLeft{\modfont{Backspace}}
+\setKeyBottomLeft{\modfont{\backspace}}
+
+\redKey
+\placeKey{\fpeval{6.5-\indexOffset}}{1}
+\setKeyTopLeft{Y}
+
+\placeKey{\fpeval{7.5-\indexOffset}}{1}
+\setKeyTopLeft{U}
+
+\orangeKey
+\placeKey{\fpeval{8.5-\middleOffset}}{1}
+\setKeyTopLeft{I}
+
+\yellowKey
+\placeKey{\fpeval{9.5-\ringOffset}}{1}
+\setKeyTopLeft{O}
+
+\greenKey
+\placeKey{10.5}{1}
+\setKeyTopLeft{P}
+
+\placeKey{11.5}{1}
+\setKeyTopLeft{\{}
+\setKeyBottomLeft{[}
+
+\placeKey{12.5}{1}
+\setKeyTopLeft{\}}
+\setKeyBottomLeft{]}
+
+\placeKey{13.5}{1}[1.5][1]
+\setKeyTopLeft{|}
+\setKeyBottomLeft{\textbackslash}
+
+\redKey
+\placeKey{\fpeval{6.75-\indexOffset}}{2}
+\setKeyTopLeft{H}
+
+\placeKey{\fpeval{7.75-\indexOffset}}{2}
+\setKeyTopLeft{J}
+
+\orangeKey
+\placeKey{\fpeval{8.75-\middleOffset}}{2}
+\setKeyTopLeft{K}
+
+\yellowKey
+\placeKey{\fpeval{9.75-\ringOffset}}{2}
+\setKeyTopLeft{L}
+
+\greenKey
+\placeKey{10.75}{2}
+\setKeyTopLeft{:}
+\setKeyBottomLeft{;}
+
+\placeKey{11.75}{2}
+\setKeyTopLeft{\textsf{\textquotedbl}}
+\setKeyBottomLeft{\textsf{\textquotesingle}}
+
+\placeKey{12.75}{2}[2.25][1]
+\setKeyTopLeft{\modfont{Enter}}
+\setKeyBottomLeft{\modfont{\return}}
+
+\redKey
+\placeKey{\fpeval{7.25-\indexOffset}}{3}
+\setKeyTopLeft{N}
+
+\placeKey{\fpeval{8.25-\indexOffset}}{3}
+\setKeyTopLeft{M}
+
+\orangeKey
+\placeKey{\fpeval{9.25-\middleOffset}}{3}
+\setKeyTopLeft{<}
+\setKeyBottomLeft{,}
+
+\yellowKey
+\placeKey{\fpeval{10.25-\ringOffset}}{3}
+\setKeyTopLeft{>}
+\setKeyBottomLeft{.}
+
+\greenKey
+\placeKey{11.25}{3}
+\setKeyTopLeft{?}
+\setKeyBottomLeft{/}
+
+\placeKey{12.25}{3}[2.75][1]
+\setKeyTopLeft{\modfont{Shift}}
+\setKeyBottomLeft{\modfont{\shift}}
+
+\blueKey
+\placeKey{\fpeval{3.75-0.25}}{\fpeval{4+0.25}}[6.25][1]
+
+\placeKey{\fpeval{10-0.25}}{\fpeval{4+0.25}}[1.25][1]
+\setKeyTopLeft{\modfont{Alt}}
+
+\greenKey
+\placeKey{11.25}{4}[1.25][1]
+\setKeyTopLeft{\modfont{Win}}
+
+\placeKey{12.5}{4}[1.25][1]
+\setKeyTopLeft{\modfont{Menu}}
+
+\placeKey{13.75}{4}[1.25][1]
+\setKeyTopLeft{\modfont{Ctrl}}
+
+\node at (\fpeval{3.5+(7.5/2)-0.5}\U,-5.25\U) {\textbf{Thumb\strut}};
+
+\placeBackground{3.5}{1}{11.5}{7.25}
+

@@ -1,5 +1,5 @@
-% starting Position is 0,0; starting Dimension is 1x1
-\fontsize{12pt}{12pt}\selectfont % Please note that the front labels are 10pt
+\fontsize{20pt}{20pt}\selectfont
+\newcommand{\modfont}[1]{{\fontsize{16pt}{16pt}\selectfont{}#1}}
 
 \placeKey{0}{0}
 \setKeyTopLeft{\~{}}
@@ -46,170 +46,180 @@
 \setKeyBottomLeft{0}
 
 \placeKey{11}{0}
-\setKeyTopLeft{\_}
-\setKeyBottomLeft{-}
-
-\placeKey{12}{0}
-\setKeyTopLeft{+}
-\setKeyBottomLeft{=}
-
-\placeKey{13}{0}[2][1]
-\setKeyTopLeft{Backspace}
-\setKeyBottomLeft{}
-
-\placeKey{0}{1}[1.5][1]
-\setKeyTopLeft{Tab}
-
-\placeKey{1.5}{1}
-\setKeyTopLeft{Q}
-
-\placeKey{2.5}{1}
-\setKeyTopLeft{W}
-
-\placeKey{3.5}{1}
-\setKeyTopLeft{E}
-
-\placeKey{4.5}{1}
-\setKeyTopLeft{R}
-
-\placeKey{5.5}{1}
-\setKeyTopLeft{T}
-
-\placeKey{6.5}{1}
-\setKeyTopLeft{Y}
-
-\placeKey{7.5}{1}
-\setKeyTopLeft{U}
-
-\placeKey{8.5}{1}
-\setKeyTopLeft{I}
-
-\placeKey{9.5}{1}
-\setKeyTopLeft{O}
-
-\placeKey{10.5}{1}
-\setKeyTopLeft{P}
-
-\placeKey{11.5}{1}
 \setKeyTopLeft{\{}
 \setKeyBottomLeft{[}
 
-\placeKey{12.5}{1}
+\placeKey{12}{0}
 \setKeyTopLeft{\}}
 \setKeyBottomLeft{]}
+
+\modKey
+\placeKey{13}{0}[2][1]
+\setKeyTopLeft{\modfont{Backspace}}
+\setKeyBottomLeft{\modfont{\backspace}}
+
+\placeKey{0}{1}[1.5][1]
+\setKeyTopLeft{\modfont{Tab}}
+\setKeyBottomLeft{\modfont{\tab}}
+
+\resetKeyColors
+\placeKey{1.5}{1}
+\setKeyTopLeft{\textsf{\textquotedbl}}
+\setKeyBottomLeft{\textsf{\textquotesingle}}
+
+\placeKey{2.5}{1}
+\setKeyTopLeft{<}
+\setKeyBottomLeft{,}
+
+\placeKey{3.5}{1}
+\setKeyTopLeft{>}
+\setKeyBottomLeft{.}
+
+\placeKey{4.5}{1}
+\setKeyTopLeft{P}
+
+\placeKey{5.5}{1}
+\setKeyTopLeft{Y}
+
+\placeKey{6.5}{1}
+\setKeyTopLeft{F}
+
+\placeKey{7.5}{1}
+\setKeyTopLeft{G}
+
+\placeKey{8.5}{1}
+\setKeyTopLeft{C}
+
+\placeKey{9.5}{1}
+\setKeyTopLeft{R}
+
+\placeKey{10.5}{1}
+\setKeyTopLeft{L}
+
+\placeKey{11.5}{1}
+\setKeyTopLeft{?}
+\setKeyBottomLeft{/}
+
+\placeKey{12.5}{1}
+\setKeyTopLeft{+}
+\setKeyBottomLeft{=}
 
 \placeKey{13.5}{1}[1.5][1]
 \setKeyTopLeft{|}
 \setKeyBottomLeft{\textbackslash}
 
+\modKey
 \placeKey{0}{2}[1.75][1]
-\setKeyTopLeft{Caps Lock}
-\setKeyBottomLeft{}
+\setKeyTopLeft{\modfont{Caps Lock}}
+\setKeyBottomLeft{\modfont{\capslock}}
 
+\resetKeyColors
 \placeKey{1.75}{2}
 \setKeyTopLeft{A}
 
 \placeKey{2.75}{2}
-\setKeyTopLeft{S}
+\setKeyTopLeft{O}
 
 \placeKey{3.75}{2}
-\setKeyTopLeft{D}
+\setKeyTopLeft{E}
 
 \placeKey{4.75}{2}
-\setKeyTopLeft{F}
+\setKeyTopLeft{U}
 
 \placeKey{5.75}{2}
-\setKeyTopLeft{G}
+\setKeyTopLeft{I}
 
 \placeKey{6.75}{2}
-\setKeyTopLeft{H}
+\setKeyTopLeft{D}
 
 \placeKey{7.75}{2}
-\setKeyTopLeft{J}
+\setKeyTopLeft{H}
 
 \placeKey{8.75}{2}
-\setKeyTopLeft{K}
+\setKeyTopLeft{T}
 
 \placeKey{9.75}{2}
-\setKeyTopLeft{L}
+\setKeyTopLeft{N}
 
 \placeKey{10.75}{2}
+\setKeyTopLeft{S}
+
+\placeKey{11.75}{2}
+\setKeyTopLeft{\_}
+\setKeyBottomLeft{-}
+
+\modKey
+\placeKey{12.75}{2}[2.25][1]
+\setKeyTopLeft{\modfont{Enter}}
+\setKeyBottomLeft{\return}
+
+\placeKey{0}{3}[2.25][1]
+\setKeyTopLeft{\modfont{Shift}}
+\setKeyBottomLeft{\modfont{\shift}}
+
+\resetKeyColors
+\placeKey{2.25}{3}
 \setKeyTopLeft{:}
 \setKeyBottomLeft{;}
 
-\placeKey{11.75}{2}
-% \setKeyTopLeft{"} % not the right one
-% \setKeyBottomLeft{'} % not the right one
-\setKeyTopLeft{\textquotedbl}
-\setKeyBottomLeft{\textquotesingle}
-
-\placeKey{12.75}{2}[2.25][1]
-\setKeyTopLeft{Enter}
-\setKeyBottomLeft{}
-
-\placeKey{0}{3}[2.25][1]
-\setKeyTopLeft{Shift}
-
-\placeKey{2.25}{3}
-\setKeyTopLeft{Z}
-
 \placeKey{3.25}{3}
-\setKeyTopLeft{X}
+\setKeyTopLeft{Q}
 
 \placeKey{4.25}{3}
-\setKeyTopLeft{C}
+\setKeyTopLeft{J}
 
 \placeKey{5.25}{3}
-\setKeyTopLeft{V}
+\setKeyTopLeft{K}
 
 \placeKey{6.25}{3}
-\setKeyTopLeft{B}
+\setKeyTopLeft{X}
 
 \placeKey{7.25}{3}
-\setKeyTopLeft{N}
+\setKeyTopLeft{B}
 
 \placeKey{8.25}{3}
 \setKeyTopLeft{M}
 
 \placeKey{9.25}{3}
-\setKeyTopLeft{<}
-\setKeyBottomLeft{,}
+\setKeyTopLeft{W}
 
 \placeKey{10.25}{3}
-\setKeyTopLeft{>}
-\setKeyBottomLeft{.}
+\setKeyTopLeft{V}
 
 \placeKey{11.25}{3}
-\setKeyTopLeft{?}
-\setKeyBottomLeft{/}
+\setKeyTopLeft{Z}
 
+\modKey
 \placeKey{12.25}{3}[2.75][1]
-\setKeyTopLeft{Shift}
-\setKeyBottomLeft{}
+\setKeyTopLeft{\modfont{Shift}}
+\setKeyBottomLeft{\modfont{\shift}}
 
 \placeKey{0}{4}[1.25][1]
-\setKeyTopLeft{Ctrl}
+\setKeyTopLeft{\modfont{Ctrl}}
 
+\superKey
 \placeKey{1.25}{4}[1.25][1]
-\setKeyTopLeft{Win}
+\setKeyTopLeft{\modfont{Win}}
 
+\modKey
 \placeKey{2.5}{4}[1.25][1]
-\setKeyTopLeft{Alt}
+\setKeyTopLeft{\modfont{Alt}}
 
+\resetKeyColors
 \placeKey{3.75}{4}[6.25][1]
-\setKeyTopLeft{}
 
+\modKey
 \placeKey{10}{4}[1.25][1]
-\setKeyTopLeft{Alt}
+\setKeyTopLeft{\modfont{Alt}}
 
+\superKey
 \placeKey{11.25}{4}[1.25][1]
-\setKeyTopLeft{Win}
+\setKeyTopLeft{\modfont{Win}}
 
 \placeKey{12.5}{4}[1.25][1]
-\setKeyTopLeft{Menu}
+\setKeyTopLeft{\modfont{Menu}}
 
+\modKey
 \placeKey{13.75}{4}[1.25][1]
-\setKeyTopLeft{Ctrl}
-
-\placeBackground{0}{0}{15}{5}
+\setKeyTopLeft{\modfont{Ctrl}}
 

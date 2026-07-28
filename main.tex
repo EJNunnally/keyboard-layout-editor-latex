@@ -1,15 +1,23 @@
 \documentclass[]{standalone}
-\usepackage{keys}
+% can use one of the following options:
+% Denelson
+\usepackage[Denelson]{keys}
 
 \begin{document}
 \begin{tikzpicture}
-    \fontsize{12pt}{12pt}\selectfont % Please note that the front labels are 10pt
+    % Load layouts in one style at a time; otherwise, things get messy...
 
-    % use only one of the layouts; otherwise it gets messy
-    % convert pdf to svg: `dvisvgm --no-fonts --pdf main.pdf --output=[name]`
-    % --no-fonts is necessary to keep the fonts consistent
+    %%% Default (KLE) style
     % \input{layouts/test.tex}
-    \input{layouts/default60.tex}
+    % \input{layouts/default60.tex}
     % \input{layouts/fingerchart60.tex}
+
+    %%% Denelson (wikipedia) style
+    % \input{layouts/ansi60.tex}
+    % \input{layouts/homerowleft.tex}
+    % \input{layouts/homerowleftcolored.tex}
+    % \input{layouts/homerowright.tex}
+    % \input{layouts/homerowrightcolored.tex}
+    \input{layouts/dvorak60.tex}
 \end{tikzpicture}
 \end{document}

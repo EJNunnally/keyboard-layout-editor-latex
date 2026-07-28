@@ -1,0 +1,163 @@
+\fontsize{20pt}{20pt}\selectfont
+\newcommand{\modfont}[1]{{\fontsize{16pt}{16pt}\selectfont{}#1}}
+\newcommand{\ringOffset}{0.75}
+\newcommand{\middleOffset}{\ringOffset+0.75}
+\newcommand{\indexOffset}{\middleOffset+0.75}
+
+% other keyboard colors
+\definecolor{basered}{RGB}{234,153,153} % ea9999 
+\definecolor{topred}{RGB}{255,193,193} % ffc1c1
+\definecolor{borderred}{RGB}{211,138,138} % d38a8a
+
+\definecolor{baseorange}{RGB}{246,178,107} % f6b26b
+\definecolor{toporange}{RGB}{255,223,149} % ffdf95
+\definecolor{borderorange}{RGB}{221,160,96} % dda060
+
+\definecolor{baseyellow}{RGB}{255,217,102} % ffd966
+\definecolor{topyellow}{RGB}{255,251,134} % fffb86
+\definecolor{borderyellow}{RGB}{230,195,92} % e6c35c
+
+\definecolor{basegreen}{RGB}{147,196,125} % 93c47d
+\definecolor{topgreen}{RGB}{189,240,166} % bdf0a6
+\definecolor{bordergreen}{RGB}{132,176,113} % 84b071
+
+\definecolor{baseblue}{RGB}{159,197,232} % 9fc5e8
+\definecolor{topblue}{RGB}{204,243,255} % ccf3ff
+\definecolor{borderblue}{RGB}{143,177,209} % 8fb1d1
+
+\definecolor{basepurple}{RGB}{180,167,214} % b4a7d6
+\definecolor{toppurple}{RGB}{221,207,255} % ddcfff
+\definecolor{borderpurple}{RGB}{162,150,193} % a296c1
+
+% preset keys for very specific diagrams...?
+\NewDocumentCommand{\redKey}{}{\setKeyColors{basered}{topred}{borderred}}
+
+\NewDocumentCommand{\orangeKey}{}{\setKeyColors{baseorange}{toporange}{borderorange}}
+
+\NewDocumentCommand{\yellowKey}{}{\setKeyColors{baseyellow}{topyellow}{borderyellow}}
+
+\NewDocumentCommand{\greenKey}{}{\setKeyColors{basegreen}{topgreen}{bordergreen}}
+
+\NewDocumentCommand{\blueKey}{}{\setKeyColors{baseblue}{topblue}{borderblue}}
+
+\NewDocumentCommand{\purpleKey}{}{\setKeyColors{basepurple}{toppurple}{borderpurple}}
+
+\node at (0.5\U,1\U) {\textbf{Pinky\strut}};
+\node at (\fpeval{2+\ringOffset}\U,1\U) {\textbf{Ring}\strut};
+\node at (\fpeval{3+\middleOffset}\U,1\U) {\textbf{Middle}\strut};
+\node at (\fpeval{0.5+4+\indexOffset}\U,1\U) {\textbf{Index}\strut};
+
+\greenKey
+\placeKey{0}{0}
+\setKeyTopLeft{\~{}}
+\setKeyBottomLeft{\textasciigrave}
+
+\placeKey{1}{0}
+\setKeyTopLeft{!}
+\setKeyBottomLeft{1}
+
+\yellowKey
+\placeKey{\fpeval{2+\ringOffset}}{0}
+\setKeyTopLeft{@}
+\setKeyBottomLeft{2}
+
+\orangeKey
+\placeKey{\fpeval{3+\middleOffset}}{0}
+\setKeyTopLeft{\#}
+\setKeyBottomLeft{3}
+
+\redKey
+\placeKey{\fpeval{4+\indexOffset}}{0}
+\setKeyTopLeft{\$}
+\setKeyBottomLeft{4}
+
+\placeKey{\fpeval{5+\indexOffset}}{0}
+\setKeyTopLeft{\%}
+\setKeyBottomLeft{5}
+
+\greenKey
+\placeKey{0}{1}[1.5][1]
+\setKeyTopLeft{\modfont{Tab}}
+\setKeyBottomLeft{\modfont{\tab}}
+
+\placeKey{1.5}{1}
+\setKeyTopLeft{Q}
+
+\yellowKey
+\placeKey{\fpeval{2.5+\ringOffset}}{1}
+\setKeyTopLeft{W}
+
+\orangeKey
+\placeKey{\fpeval{3.5+\middleOffset}}{1}
+\setKeyTopLeft{E}
+
+\redKey
+\placeKey{\fpeval{4.5+\indexOffset}}{1}
+\setKeyTopLeft{R}
+
+\placeKey{\fpeval{5.5+\indexOffset}}{1}
+\setKeyTopLeft{T}
+\modKey
+
+\greenKey
+\placeKey{0}{2}[1.75][1]
+\setKeyTopLeft{\modfont{Caps Lock}}
+\setKeyBottomLeft{\modfont{\capslock}}
+
+\placeKey{1.75}{2}
+\setKeyTopLeft{A}
+
+\yellowKey  
+\placeKey{\fpeval{2.75+\ringOffset}}{2}
+\setKeyTopLeft{S}
+
+\orangeKey
+\placeKey{\fpeval{3.75+\middleOffset}}{2}
+\setKeyTopLeft{D}
+
+\redKey
+\placeKey{\fpeval{4.75+\indexOffset}}{2}
+\setKeyTopLeft{F}
+
+\placeKey{\fpeval{5.75+\indexOffset}}{2}
+\setKeyTopLeft{G}
+
+\greenKey
+\placeKey{0}{3}[2.25][1]
+\setKeyTopLeft{\modfont{Shift}}
+\setKeyBottomLeft{\modfont{\shift}}
+
+\placeKey{2.25}{3}
+\setKeyTopLeft{Z}
+
+\yellowKey
+\placeKey{\fpeval{3.25+\ringOffset}}{3}
+\setKeyTopLeft{X}
+
+\orangeKey
+\placeKey{\fpeval{4.25+\middleOffset}}{3}
+\setKeyTopLeft{C}
+
+\redKey
+\placeKey{\fpeval{5.25+\indexOffset}}{3}
+\setKeyTopLeft{V}
+
+\placeKey{\fpeval{6.25+\indexOffset}}{3}
+\setKeyTopLeft{B}
+
+\greenKey
+\placeKey{0}{4}[1.25][1]
+\setKeyTopLeft{\modfont{Ctrl}}
+
+\placeKey{1.25}{4}[1.25][1]
+\setKeyTopLeft{\modfont{Win}}
+
+\blueKey
+\placeKey{2.75}{4.25}[1.25][1]
+\setKeyTopLeft{\modfont{Alt}}
+
+\placeKey{4}{4.25}[6.25][1]
+
+\node at (6.5\U,-5.25\U) {\textbf{Thumb\strut}};
+
+\placeBackground{0}{1}{10.25}{7.25}

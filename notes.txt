@@ -1,5 +1,18 @@
 % make keys as closely styled with the default keys from keyboard-layout-editor.com as possible
+
 % colors are easy to grab from a color picker: the colors selected on the site are the colors for the base and not the top: use a color picker for the top colors (the border colors are a real pain to grab because of transparency, which is hard to replicate in tikZ)
+
 % plan: make a set of temporary 'variables' in the form of commands using \newcommand and \renewcommand; could use macro chaining, but I think I would have to keep adding to the every other command because I might have so many variables; I'm trying to make this cleaner and more robust, but we'll see what happens
+
 % The commands are working well so far; I'm thinking of using preset commands for this one, like setting the colors of the key and the labels or presetting the size of the key or even making a preset for a key with three labels or something...
+
 % try making a separate spacing command \Mx or \My for spacing the keys apart by a pixel so that it looks just a little more like the result from the website
+
+% 2026-07-26 Now I don't like the KLE style because the 12pt legends are too small. I do like the style from Wikipedia, but I'd still like to keep the KLE style as an artifact, so I'm going to try adding to the package to make my own custom styles with options, which I want to learn.
+
+% 2026-07-26 How do key styles work?
+% KLE: 54pt square with 5pt rounded corners, then a 42pt square with 3pt rounded corners
+% Wikipedia: 54pt square
+% How do key legends work?
+% KLE: 36pt square centered on (truecenter) + (0,3pt), default legends are 12pt Helvetica, increasing by 2pt each size
+% Wikipedia: (guess) 48pt square centered on (truecenter), default legends 18pt Arial Bold on alphas, 16pt Arial Bold on others keys with more legends
