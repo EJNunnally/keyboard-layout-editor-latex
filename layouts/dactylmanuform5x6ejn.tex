@@ -1,0 +1,243 @@
+\fontsize{20}{20}\selectfont
+\newcommand{\modfont}[1]{{\fontsize{16pt}{16pt}\selectfont{}#1}}
+\newcommand{\halfSep}{4}
+\newcommand{\colA}{\fpeval{5+\halfSep+1}}
+\newcommand{\colB}{\fpeval{\colA+1}}
+\newcommand{\colC}{\fpeval{\colB+1}}
+\newcommand{\colD}{\fpeval{\colC+1}}
+\newcommand{\colE}{\fpeval{\colD+1}}
+\newcommand{\colF}{\fpeval{\colE+1}}
+
+\modKey
+\placeKey{0}{0.5}
+\setKeyTopLeft{\modfont{Esc}}
+
+\resetKeyColors
+\placeKey{1}{0.5}
+\setKeyTopLeft{!}
+\setKeyBottomLeft{1}
+
+\placeKey{2}{0}
+\setKeyTopLeft{@}
+\setKeyBottomLeft{2}
+
+\placeKey{3}{0}
+\setKeyTopLeft{\#}
+\setKeyBottomLeft{3}
+
+\placeKey{4}{0}
+\setKeyTopLeft{\$}
+\setKeyBottomLeft{4}
+
+\placeKey{5}{0}
+\setKeyTopLeft{\%}
+\setKeyBottomLeft{5}
+
+\placeKey{\colA}{0}
+\setKeyTopLeft{\textasciicircum}
+\setKeyBottomLeft{6}
+
+\placeKey{\colB}{0}
+\setKeyTopLeft{\&}
+\setKeyBottomLeft{7}
+
+\placeKey{\colC}{0}
+\setKeyTopLeft{*}
+\setKeyBottomLeft{8}
+
+\placeKey{\colD}{0}
+\setKeyTopLeft{(}
+\setKeyBottomLeft{9}
+
+\placeKey{\colE}{0.5}
+\setKeyTopLeft{)}
+\setKeyBottomLeft{0}
+
+\placeKey{\colF}{0.5}
+\setKeyTopLeft{\~{}}
+\setKeyBottomLeft{\textasciigrave}
+
+\modKey
+\placeKey{0}{1.5}
+\setKeyTopLeft{\modfont{Tab}}
+\setKeyBottomLeft{\modfont{\tab}}
+
+\resetKeyColors
+\placeKey{1}{1.5}
+\setKeyTopLeft{\textsf{\textquotedbl}}
+\setKeyBottomLeft{\textsf{\textquotesingle}}
+
+\placeKey{2}{1}
+\setKeyTopLeft{<}
+\setKeyBottomLeft{,}
+
+\placeKey{3}{1}
+\setKeyTopLeft{>}
+\setKeyBottomLeft{.}
+
+\placeKey{4}{1}
+\setKeyTopLeft{P}
+
+\placeKey{5}{1}
+\setKeyTopLeft{Y}
+
+\placeKey{\colA}{1}
+\setKeyTopLeft{F}
+
+\placeKey{\colB}{1}
+\setKeyTopLeft{G}
+
+\placeKey{\colC}{1}
+\setKeyTopLeft{C}
+
+\placeKey{\colD}{1}
+\setKeyTopLeft{R}
+
+\placeKey{\colE}{1.5}
+\setKeyTopLeft{L}
+
+\placeKey{\colF}{1.5}
+\setKeyTopLeft{|}
+\setKeyBottomLeft{\textbackslash}
+
+\modKey
+\placeKey{0}{2.5}
+\setKeyTopLeft{\modfont{Ctrl}}
+
+\resetKeyColors
+\placeKey{1}{2.5}
+\setKeyTopLeft{A}
+
+\placeKey{2}{2}
+\setKeyTopLeft{O}
+
+\placeKey{3}{2}
+\setKeyTopLeft{E}
+
+\placeKey{4}{2}
+\setKeyTopLeft{U}
+
+\placeKey{5}{2}
+\setKeyTopLeft{I}
+
+\placeKey{\colA}{2}
+\setKeyTopLeft{D}
+
+\placeKey{\colB}{2}
+\setKeyTopLeft{H}
+
+\placeKey{\colC}{2}
+\setKeyTopLeft{T}
+
+\placeKey{\colD}{2}
+\setKeyTopLeft{N}
+
+\placeKey{\colE}{2.5}
+\setKeyTopLeft{S}
+
+\placeKey{\colF}{2.5}
+\setKeyTopLeft{\_}
+\setKeyBottomLeft{-}
+
+\modKey
+\placeKey{0}{3.5}
+\setKeyTopLeft{\modfont{Shift}}
+\setKeyBottomLeft{\modfont{\shift}}
+
+\resetKeyColors
+\placeKey{1}{3.5}
+\setKeyTopLeft{:}
+\setKeyBottomLeft{;}
+
+\placeKey{2}{3}
+\setKeyTopLeft{Q}
+
+\placeKey{3}{3}
+\setKeyTopLeft{J}
+
+\placeKey{4}{3}
+\setKeyTopLeft{K}
+
+\placeKey{5}{3}
+\setKeyTopLeft{X}
+
+\placeKey{\colA}{3}
+\setKeyTopLeft{B}
+
+\placeKey{\colB}{3}
+\setKeyTopLeft{M}
+
+\placeKey{\colC}{3}
+\setKeyTopLeft{W}
+
+\placeKey{\colD}{3}
+\setKeyTopLeft{V}
+
+\placeKey{\colE}{3.5}
+\setKeyTopLeft{Z}
+
+\modKey
+\placeKey{\colF}{3.5}
+\setKeyTopLeft{\modfont{Shift}}
+\setKeyBottomLeft{\modfont{\shift}}
+
+\resetKeyColors
+\placeKey{2}{4}
+\setKeyTopLeft{\leftarrowkey}
+
+\placeKey{3}{4}
+\setKeyTopLeft{\rightarrowkey}
+
+\placeKey{\colC}{4}
+\setKeyTopLeft{\downarrowkey}
+
+\placeKey{\colD}{4}
+\setKeyTopLeft{\uparrowkey}
+
+\rotateKey{-15}[4.75][5]{ % just noticed I can have multiple keys inside, but the downside is I can't have empty lines
+    \superKey
+    \placeKey{4.375}{4.375}
+    \setKeyTopLeft{\modfont{Fn1}}
+    \resetKeyColors
+    \placeKey{5.375}{4.125}[1][1.5]
+    \setKeyTopLeft{\modfont{Spc}}
+    \placeKey{6.375}{4.125}[1][1.5]
+    \setKeyTopLeft{?}
+    \setKeyBottomLeft{/}
+    \modKey
+    \placeKey{4.375}{5.375}
+    \setKeyTopLeft{\modfont{Alt}}
+    \superKey
+    \placeKey{5.375}{5.5}
+    \setKeyTopLeft{\modfont{Win}}
+    \resetKeyColors
+    \placeKey{6.375}{5.5}
+    \setKeyTopLeft{\textbraceleft} % \{ is bothering the indent
+    \setKeyBottomLeft{[}
+}
+
+\rotateKey{15}[\fpeval{\colA+0.25}][5]{ % just noticed I can have multiple keys inside, but the downside is I can't have empty lines
+    \placeKey{\fpeval{\colB-2.375}}{4.125}[1][1.5]
+    \setKeyTopLeft{+}
+    \setKeyBottomLeft{=}
+    \placeKey{\fpeval{\colB-1.375}}{4.125}[1][1.5]
+    \modKey
+    \setKeyTopLeft{\modfont{Ent}}
+    \setKeyBottomLeft{\modfont{\return}}
+    \placeKey{\fpeval{\colB-0.375}}{4.375}
+    \setKeyTopLeft{\modfont{Bksp}}
+    \setKeyBottomLeft{\modfont{\smallbackspace}}
+    \resetKeyColors
+    \placeKey{\fpeval{\colB-2.375}}{5.5}
+    \setKeyTopLeft{\textbraceright}
+    \setKeyBottomLeft{]}
+    \modKey
+    \placeKey{\fpeval{\colB-1.375}}{5.5}
+    \setKeyTopLeft{\modfont{Del}}
+    \superKey
+    \placeKey{\fpeval{\colB-0.375}}{5.375}
+    \setKeyTopLeft{\modfont{Fn2}}
+}
+
+\placeBackground{0}{0}{\fpeval{12+\halfSep}}{7.125}
+

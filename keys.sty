@@ -91,11 +91,23 @@
     \renewcommand{\keyRotationAngle}{#3}
 }
 
+\NewDocumentCommand{\rotateKey}{mO{0}O{0}m}{
+    \renewcommand{\keyRotationAngle}{#1}
+    \begin{scope}[rotate around={#1:(#2\U,-#3\U)}]
+        {
+            #4
+        }
+    \end{scope}
+    \renewcommand{\keyRotationAngle}{0}
+}
+
 \NewDocumentCommand{\keyLabel}{mm}{
     \node[] () at (labelcenter) {
-        \mbox{%
-            \parbox[#1][\keyLabelHeight][#1]{\keyLabelWidth}{#2\strut}%
-        }
+        % \rotatebox{\keyRotationAngle}{
+            \mbox{%
+                \parbox[#1][\keyLabelHeight][#1]{\keyLabelWidth}{#2\strut}%
+            }
+        % }
     };
 }
 

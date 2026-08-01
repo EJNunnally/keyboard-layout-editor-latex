@@ -54,3 +54,46 @@
    \end{tikzpicture}%
 }
 
+\newcommand{\smallbackspace}{
+    % for the 1U Backspace keys out there
+    \begin{tikzpicture}[yshift=0.65ex,menukeys key symbol]
+        \draw [arrows={-Stealth[inset=0]},menukeys thick] (32pt,0) -- (-6pt,0);
+    \end{tikzpicture}%
+}
+
+\newcommand{\uparrowkey}{
+    \hspace{-1ex}
+    % for some reason, the arrows won't shift to the left within the picture, so this is a band-aid fix imo
+    \begin{tikzpicture}[line width=2.5pt,baseline={(0,0)}]
+        \draw [arrows={-Triangle[width=8pt]}] (0,0) -- (0,6mm);
+    \end{tikzpicture}%
+}
+
+\newcommand{\downarrowkey}{
+    \hspace{-1ex}
+    \begin{tikzpicture}[line width=2.5pt,baseline={(0,0)}]
+        \draw [arrows={Triangle[width=8pt]}-] (0,0) -- (0,6mm);
+    \end{tikzpicture}%
+}
+
+\newcommand{\leftarrowkey}{
+    \hspace{-1.2ex}
+    \begin{tikzpicture}[yshift=0.5ex,line width=2.5pt,baseline={(0,0)}]
+        \draw [arrows={Triangle[width=8pt]}-] (0,0) -- (6mm,0);
+    \end{tikzpicture}%
+}
+
+\newcommand{\rightarrowkey}{
+    \hspace{-1.2ex}
+    \begin{tikzpicture}[yshift=0.5ex,line width=2.5pt,baseline={(0,0)}]
+        \draw [arrows=-{Triangle[width=8pt]}] (0,0) -- (6mm,0);
+    \end{tikzpicture}%
+}
+
+\newcommand{\transparent}{
+    \hspace{-1.2ex}
+    \begin{tikzpicture}[yshift=1.5ex,line width=2.5pt,baseline={(0,0)}]
+        \draw [] (0,0) -- (\fpeval{2*sqrt(3)}mm,-6mm) -- (\fpeval{4*sqrt(3)}mm,0) -- cycle;
+    \end{tikzpicture}%
+}
+

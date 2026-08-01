@@ -1,23 +1,41 @@
-\documentclass[]{standalone}
+% \documentclass[]{standalone}
+\documentclass[]{article}
 % can use one of the following options:
 % Denelson
 \usepackage[Denelson]{keys}
+\usepackage[margin=0.25in]{geometry}
+\newcommand{\myscale}{0.65}
 
 \begin{document}
+\centering
 \begin{tikzpicture}
-    % Load layouts in one style at a time; otherwise, things get messy...
+    \begin{scope}[scale=\myscale, transform shape]
+        % Load layouts in one style at a time; otherwise, things get messy...
 
-    %%% Default (KLE) style
-    % \input{layouts/test.tex}
-    % \input{layouts/default60.tex}
-    % \input{layouts/fingerchart60.tex}
+        %%% Default (KLE) style
+        % \input{layouts/test.tex}
+        % \input{layouts/default60.tex}
+        % \input{layouts/fingerchart60.tex}
 
-    %%% Denelson (wikipedia) style
-    \input{layouts/ansi60.tex}
-    % \input{layouts/homerowleft.tex}
-    % \input{layouts/homerowleftcolored.tex}
-    % \input{layouts/homerowright.tex}
-    % \input{layouts/homerowrightcolored.tex}
-    % \input{layouts/dvorak60.tex}
+        %%% Denelson (wikipedia) style
+        % \input{layouts/ansi60.tex}
+        % \input{layouts/homerowleft.tex}
+        % \input{layouts/homerowleftcolored.tex}
+        % \input{layouts/homerowright.tex}
+        % \input{layouts/homerowrightcolored.tex}
+        % \input{layouts/dvorak60.tex}
+        % \input{layouts/rotate.tex}
+        % \input{layouts/lily58.tex}
+        % \input{layouts/lily58ejn.tex}
+        % \input{layouts/dactylmanuform5x6ejn.tex}
+        \input{layouts/dactylmanuform5x6qwerty.tex}
+    \end{scope}
 \end{tikzpicture}
+% \begin{tikzpicture}[scale=\myscale, transform shape]
+%         \input{layouts/dactylmanuform5x6qwl.tex}
+% \end{tikzpicture}
+% \begin{tikzpicture}[scale=\myscale, transform shape]
+%         \input{layouts/dactylmanuform5x6ejn.tex}
+% \end{tikzpicture}
+
 \end{document}

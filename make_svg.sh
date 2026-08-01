@@ -1,6 +1,6 @@
 #!/bin/bash
 if [ -z "$1" ]; then
-    OUTPUT="images/$(date +%Y-%m-%d_%H.%M.%S).svg"
+    OUTPUT="images-no-fonts/$(date +%Y-%m-%d_%H.%M.%S).svg"
 else
     OUTPUT="images-no-fonts/$1.svg"
 fi
