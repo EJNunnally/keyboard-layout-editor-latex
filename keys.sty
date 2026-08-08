@@ -105,7 +105,7 @@
     \node[] () at (labelcenter) {
         % \rotatebox{\keyRotationAngle}{
             \mbox{%
-                \parbox[#1][\keyLabelHeight][#1]{\keyLabelWidth}{#2\strut}%
+                \parbox[b][\keyLabelHeight][#1]{\keyLabelWidth}{#2\strut}% position (first argument) should be set to `b` to avoid font size warnings
             }
         % }
     };
@@ -271,6 +271,7 @@
     \RenewDocumentCommand{\setKeyCenterCenter}{m}{
         \renewcommand{\topLeftLegend}{#1}
         \centerLabel{\centering\textbf\topLeftLegend}
+        % \node at (labelcenter) {\strut\textbf\topLeftLegend};
     }
 
     \RenewDocumentCommand{\setKeyBottomLeft}{m}{

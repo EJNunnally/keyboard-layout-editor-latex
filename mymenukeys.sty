@@ -90,10 +90,11 @@
     \end{tikzpicture}%
 }
 
+\newcommand{\transparentHeight}{5}
 \newcommand{\transparent}{
     \hspace{-1.2ex}
     \begin{tikzpicture}[yshift=1.5ex,line width=2.5pt,baseline={(0,0)}]
-        \draw [] (0,0) -- (\fpeval{2*sqrt(3)}mm,-6mm) -- (\fpeval{4*sqrt(3)}mm,0) -- cycle;
+        \draw [] (0,0) -- (\fpeval{(2*sqrt(3)*\transparentHeight)/6}mm,-\transparentHeight mm) -- (\fpeval{(2*sqrt(3)*\transparentHeight)/3}mm,0mm) -- cycle;
     \end{tikzpicture}%
 }
 
