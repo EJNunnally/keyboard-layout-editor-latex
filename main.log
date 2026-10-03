@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999996 (TeX Live 2025/dev/Debian) (preloaded format=xelatex 2026.1.14)  3 AUG 2026 14:13
+This is XeTeX, Version 3.141592653-2.6-0.999996 (TeX Live 2025/dev/Debian) (preloaded format=xelatex 2026.7.14)  7 AUG 2026 20:51
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -529,7 +529,7 @@ LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `bold'
 (Font)                  OT1/cmss/bx/n --> TU/Helvetica(0)/b/n on input line 9.
 LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `bold'
 (Font)                  OT1/cmtt/m/n --> TU/lmtt/b/n on input line 9.
- (./layouts/ansi60.tex)
+ (./layouts/dactylmanuform5x6qwerty.tex)
 
 [1
 
@@ -540,12 +540,12 @@ L3 programming layer <2025-01-18>
  ***********
  ) 
 Here is how much of TeX's memory you used:
- 15193 strings out of 473835
- 359578 string characters out of 5731946
- 910101 words of memory out of 5000000
- 38013 multiletter control sequences out of 15000+600000
+ 15236 strings out of 475852
+ 360655 string characters out of 5775423
+ 916006 words of memory out of 5000000
+ 37920 multiletter control sequences out of 15000+600000
  558981 words of font info for 54 fonts, out of 8000000 for 9000
- 1348 hyphenation exceptions out of 8191
- 117i,8n,121p,443b,1302s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 14 hyphenation exceptions out of 8191
+ 117i,8n,121p,440b,1571s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
 Output written on main.pdf (1 page).

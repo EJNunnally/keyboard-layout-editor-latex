@@ -4,12 +4,12 @@
 % Denelson
 \usepackage[Denelson]{keys}
 % \usepackage[margin=0.25in]{geometry}
-\newcommand{\myscale}{0.65}
+\newcommand{\myscale}{1}
 
 \begin{document}
 % \centering
 \begin{tikzpicture}
-    % \begin{scope}[scale=\myscale, transform shape]
+    \begin{scope}[scale=\myscale, transform shape]
         % Load layouts in one style at a time; otherwise, things get messy...
 
         %%% Default (KLE) style
@@ -18,7 +18,7 @@
         % \input{layouts/fingerchart60.tex}
 
         %%% Denelson (wikipedia) style
-        \input{layouts/ansi60.tex}
+        % \input{layouts/ansi60.tex}
         % \input{layouts/homerowleft.tex}
         % \input{layouts/homerowleftcolored.tex}
         % \input{layouts/homerowright.tex}
@@ -31,8 +31,8 @@
         % \input{layouts/lily58qwl.tex}
         % \input{layouts/lily58qwr.tex}
         % \input{layouts/dactylmanuform5x6ejn.tex}
-        % \input{layouts/dactylmanuform5x6qwerty.tex}
-    % \end{scope}
+        \input{layouts/dactylmanuform5x6qwerty.tex}
+    \end{scope}
 \end{tikzpicture}
 
 % \begin{tikzpicture}[scale=\myscale, transform shape]
